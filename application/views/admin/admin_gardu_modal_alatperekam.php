@@ -21,6 +21,7 @@
                   <th data-class='table-hidden'>Data Hidden 1</th>
                   <th data-class='table-hidden'>Data Hidden 2</th>
                   <th data-class='table-hidden'>Data Hidden 3</th>
+                  <th data-class='table-hidden'>Data Hidden 4</th>
                 </tr>
               </thead>
               <tbody>
@@ -39,6 +40,7 @@
                   <td><?php echo $hasil->update_terakhir ?></td>
                   <td><?php echo $hasil->user_upload ?></td>
                   <td><?php echo $hasil->link_pdf ?></td>
+                  <td><?php echo $hasil->id_pdf ?></td>
                 </tr>
 
                 <div class="modal fade" id="myModal-alatperekam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -53,7 +55,6 @@
                       <div class="modal-body">                              
                       </div>
                       <div class="modal-footer">
-                        <a href="<?php echo base_url() ?>adminhome/edit/<?php echo $hasil->id_pdf ?>" type="button" class="btn btn-info" data-dismiss="modal">Edit</a>
                       </div>
                     </div>
                   </div>

@@ -224,6 +224,7 @@
                     <th data-class='table-hidden'>Data Hidden 1</th>
                     <th data-class='table-hidden'>Data Hidden 2</th>
                     <th data-class='table-hidden'>Data Hidden 3</th>
+                    <th data-class='table-hidden'>Data Hidden 4</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -242,6 +243,7 @@
                     <td><?php echo $hasil->user_upload ?></td>
                     <td><?php echo $hasil->user_update ?></td>
                     <td><?php echo $hasil->link_pdf ?></td>
+                    <td><?php echo $hasil->id_pdf ?></td>
                   </tr>
 
                   <div class="modal fade" id="myModal-table1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -256,7 +258,6 @@
                         <div class="modal-body">                              
                         </div>
                         <div class="modal-footer">
-                          <a href="<?php echo base_url() ?>adminhome/edit/<?php echo $hasil->id_pdf ?>" type="button" class="btn btn-info" data-dismiss="modal">Edit</a>
                         </div>
                       </div>
                     </div>
@@ -389,6 +390,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-acdc .modal-body').html(tableContent);
     $('#myModal-acdc .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-acdc .modal-footer').html(modalFooter);
     $('#myModal-acdc').modal('show');
     });
 
@@ -402,6 +408,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-alatperekam .modal-body').html(tableContent);
     $('#myModal-alatperekam .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-alatperekam .modal-footer').html(modalFooter);
     $('#myModal-alatperekam').modal('show');
     });
 
@@ -415,6 +426,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-table1 .modal-body').html(tableContent);
     $('#myModal-table1 .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-table1 .modal-footer').html(modalFooter);
     $('#myModal-table1').modal('show');
     });
 
@@ -428,6 +444,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-dia .modal-body').html(tableContent);
     $('#myModal-dia .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-dia .modal-footer').html(modalFooter);
     $('#myModal-dia').modal('show');
     });
 
@@ -441,6 +462,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-pht .modal-body').html(tableContent);
     $('#myModal-pht .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-pht .modal-footer').html(modalFooter);
     $('#myModal-pht').modal('show');
     });
 
@@ -454,6 +480,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-trafohv .modal-body').html(tableContent);
     $('#myModal-trafohv .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-trafohv .modal-footer').html(modalFooter);
     $('#myModal-trafohv').modal('show');
     });
 
@@ -467,6 +498,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-trafolv .modal-body').html(tableContent);
     $('#myModal-trafolv .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-trafolv .modal-footer').html(modalFooter);
     $('#myModal-trafolv').modal('show');
     });
 
@@ -480,6 +516,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-kopel .modal-body').html(tableContent);
     $('#myModal-kopel .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-kopel .modal-footer').html(modalFooter);
     $('#myModal-kopel').modal('show');
     });
 
@@ -493,6 +534,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-kapasitor .modal-body').html(tableContent);
     $('#myModal-kapasitor .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-kapasitor .modal-footer').html(modalFooter);
     $('#myModal-kapasitor').modal('show');
     });
 
@@ -506,6 +552,11 @@
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-busbar .modal-body').html(tableContent);
     $('#myModal-busbar .modal-title').html(data[3]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal-busbar .modal-footer').html(modalFooter);
     $('#myModal-busbar').modal('show');
     });
 

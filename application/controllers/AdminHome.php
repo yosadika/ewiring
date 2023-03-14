@@ -105,18 +105,15 @@ class AdminHome extends MY_Controller {
 		
 		$id_pdf = $this->uri->segment(3);
 
-		$data = array(
-
-			'title' 		=> 'Edit Data Wiring',
+		$data = array(		
+			
 			'data_wiring' 	=> $this->data_bukuwiring->edit_wiring($id_pdf),
-			'data_pdf' 		=> $this->data_bukuwiring->data_pdf(),
-			'data_bay' 		=> $this->data_bukuwiring->data_bay(),
-			'data_gardu' 	=> $this->data_bukuwiring->data_gardu(),
-			'data_tragi' 	=> $this->data_bukuwiring->data_tragi(),
+			'data_merk' 	=> $this->data_bukuwiring->data_merk_get(),
+			'data_upt' 		=> $this->data_induk->data_upt(),
 
 		);
 
-		$this->load->view('admin/edit_wiring', $data);
+		$this->load->view('admin/edit_bukuwiring', $data);
 		
 	}
 

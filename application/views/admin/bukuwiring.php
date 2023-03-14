@@ -80,81 +80,77 @@
       <div class="row">
           <div class="col-12">
             <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Data Buku Wiring</h3>
-            </div>
-                <!-- table -->
-                <div class="card-body">
-                    <table id="example"
-                    class="table table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>UPT</th>
-                            <th>ULTG</th>
-                            <th>Gardu Induk</th>
-                            <th>Bay</th>
-                            <th data-class='table-hidden'>Data Hidden 1</th>
-                            <th data-class='table-hidden'>Data Hidden 2</th>
-                            <th data-class='table-hidden'>Data Hidden 3</th>
-                            <th data-class='table-hidden'>Data Hidden 4</th>
-                            <th data-class='table-hidden'>Data Hidden 5</th>
-                            <th>Judul Buku Wiring</th>
-                            <th>Keterangan</th>
-                            
-                        </tr>
-                        </thead>
-                        <tbody>
+              <div class="card-header">
+                <h3 class="card-title">Data Buku Wiring</h3>
+              </div>
+              <!-- table -->
+              <div class="card-body table-responsive">
+                <table id="example" class="table table-striped table-bordered table-hover">
+                  <thead>
+                  <tr>
+                      <th>No.</th>
+                      <th>UPT</th>
+                      <th>ULTG</th>
+                      <th>Gardu</th>
+                      <th>Bay</th>
+                      <th data-class='table-hidden'>Data Hidden 1</th>
+                      <th data-class='table-hidden'>Data Hidden 2</th>
+                      <th data-class='table-hidden'>Data Hidden 3</th>
+                      <th data-class='table-hidden'>Data Hidden 4</th>
+                      <th data-class='table-hidden'>Data Hidden 5</th>
+                      <th>Judul Buku Wiring</th>
+                      <th>Keterangan</th>
+                      
+                  </tr>
+                  </thead>
+                  <tbody>
 
-                        <?php
-                            $no = 1; 
-                            foreach($data_wiring as $hasil){
-                        ?>
-                        
-                        <tr data-widget="expandable-table">
-                            <td><?php echo $no++ ?></td>
-                            <td><?php echo $hasil->nama_upt ?></td>
-                            <td><?php echo $hasil->nama_tragi ?></td>
-                            <td><?php echo $hasil->nama_gardu ?></td>
-                            <td><?php echo $hasil->nama_bay ?></td>
-                            
-                            <td><?php echo $hasil->update_terakhir ?></td>
-                            <td><?php echo $hasil->user_upload ?></td>
-                            <td><?php echo $hasil->user_update ?></td>
-                            <td><?php echo $hasil->link_pdf ?></td>
-                            <td><?php echo $hasil->id_pdf ?></td>
-                            <td><?php echo $hasil->judul_pdf ?></td>
-                            <td><?php echo $hasil->keterangan ?></td>
-                        </tr>
+                  <?php
+                      $no = 1; 
+                      foreach($data_wiring as $hasil){
+                  ?>
+                  
+                  <tr data-widget="expandable-table">
+                      <td><?php echo $no++ ?></td>
+                      <td><?php echo $hasil->nama_upt ?></td>
+                      <td><?php echo $hasil->nama_tragi ?></td>
+                      <td><?php echo $hasil->nama_gardu ?></td>
+                      <td><?php echo $hasil->nama_bay ?></td>
+                      
+                      <td><?php echo $hasil->update_terakhir ?></td>
+                      <td><?php echo $hasil->user_upload ?></td>
+                      <td><?php echo $hasil->user_update ?></td>
+                      <td><?php echo $hasil->link_pdf ?></td>
+                      <td><?php echo $hasil->id_pdf ?></td>
+                      <td><?php echo $hasil->judul_pdf ?></td>
+                      <td><?php echo $hasil->keterangan ?></td>
+                  </tr>
 
-                        
+                  
 
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="myModalLabel">Modal Title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">                              
-                              </div>
-                              <div class="modal-footer">
-                              <a href="<?php echo base_url() ?>adminhome/edit/<?php echo $hasil->id_pdf ?>" type="button" class="btn btn-info" data-dismiss="modal">Edit</a>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                
-                              </div>
-                            </div>
-                          </div>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="myModalLabel">Modal Title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
-                        
+                        <div class="modal-body">                              
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
 
-                        <?php } ?>
+                  <?php } ?>
 
-                        </tbody>
-                    </table>
-                </div>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <!-- /.card -->
           </div>
@@ -223,6 +219,11 @@
 
 <script>
 $(document).ready(function() {
+
+  $("#example").DataTable({
+      "responsive": false, "lengthChange": true, "autoWidth": false
+  });
+
   var table = $('#example').DataTable();
 
   $('#example tbody').on('click', 'tr', function () {
@@ -235,6 +236,11 @@ $(document).ready(function() {
     tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal .modal-body').html(tableContent);
     $('#myModal .modal-title').html(data[10]);
+    // tambahkan kode modal footer di sini
+    var modalFooter = '<div>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '</div>';
+    $('#myModal .modal-footer').html(modalFooter);
     $('#myModal').modal('show');
   });
 });
