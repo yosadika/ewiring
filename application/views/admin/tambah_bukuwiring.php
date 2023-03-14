@@ -159,14 +159,14 @@
                     <div class="form-group">
                       <label>Pilih UPT</label>
                       <div class="select2-purple">
-                        <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" id="nama_upt" required>
-                          <option value="" disabled selected>Pilih salah satu</option>
-                          <?php                            
+                      <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" id="nama_upt" required>
+                        <option value="" disabled selected>Pilih salah satu</option>
+                        <?php                            
                             foreach($data_upt as $hasil){
-                          ?>
-                          <option><?php echo $hasil->nama_upt ?></option>
-                          <?php } ?> 
-                        </select>
+                        ?>
+                        <option data-kode_upt="<?php echo $hasil->kode_upt ?>"><?php echo $hasil->nama_upt ?></option>
+                        <?php } ?> 
+                      </select>
                       </div>
                     </div>
                     <!-- /.form-group -->
@@ -599,10 +599,12 @@
       // Ketika user memilih nama UPT
       $('select[name="nama_upt"]').on('change', function(){
         var nama_upt = $(this).val(); // Ambil value dari dropdown nama UPT
+        var kode_upt = $('select[name="nama_upt"] option:selected').data('kode_upt'); // Ambil nilai kode_upt dari opsi yang dipilih
+        $('select[name="nama_upt"] option[data-kode_upt="'+kode_upt+'"]').hide(); // Sembunyikan opsi dengan nilai kode_upt yang sama
 
         // Request AJAX
         $.ajax({
-            url: '<?php echo base_url("AdminHome/get_tragi_by_upt/"); ?>'+nama_upt,
+            url: '<?php echo base_url("AdminHome/get_tragi_by_upt/"); ?>'+kode_upt,
             type: 'GET',
             dataType: 'json',
             success: function(response){
@@ -611,7 +613,7 @@
 
                 // Loop untuk menambahkan options pada dropdown nama ULTG
                 $.each(response,function(index,datatragi){
-                    $('select[name="nama_tragi"]').append('<option value="'+datatragi.nama_tragi+'">'+datatragi.nama_tragi+'</option>');
+                    $('select[name="nama_tragi"]').append('<option data-kode_tragi="'+datatragi.kode_tragi+'" value="'+datatragi.nama_tragi+'">'+datatragi.nama_tragi+'</option>');
                 });
             }
         });
@@ -620,10 +622,11 @@
       // Ketika user memilih nama ULTG
       $('select[name="nama_tragi"]').on('change', function(){
         var nama_tragi = $(this).val(); // Ambil value dari dropdown nama Tragi
+        var kode_tragi = $('select[name="nama_tragi"] option:selected').data('kode_tragi'); // Ambil nilai kode_tragi dari opsi yang dipilih
 
         // Request AJAX
         $.ajax({
-            url: '<?php echo base_url("AdminHome/get_gardu_by_tragi/"); ?>'+nama_tragi,
+            url: '<?php echo base_url("AdminHome/get_gardu_by_tragi/"); ?>'+kode_tragi,
             type: 'GET',
             dataType: 'json',
             success: function(response){
@@ -632,8 +635,11 @@
 
                 // Loop untuk menambahkan options pada dropdown nama Gardu
                 $.each(response,function(index,datagardu){
-                    $('select[name="nama_gardu"]').append('<option value="'+datagardu.nama_gardu+'">'+datagardu.nama_gardu+'</option>');
+                    $('select[name="nama_gardu"]').append('<option data-kode_gardu="'+datagardu.kode_gardu+'" value="'+datagardu.nama_gardu+'">'+datagardu.nama_gardu+'</option>');
                 });
+
+                // Set nilai dropdown nama Gardu berdasarkan kode_tragi yang diambil
+                $('select[name="nama_gardu"]').val(kode_tragi);
             }
         });
       });
@@ -641,10 +647,11 @@
       // Ketika user memilih nama Gardu
       $('select[name="nama_gardu"]').on('change', function(){
         var nama_gardu = $(this).val(); // Ambil value dari dropdown nama Gardu
+        var kode_gardu = $('select[name="nama_gardu"] option:selected').data('kode_gardu'); // Ambil nilai kode_gardu dari opsi yang dipilih
 
         // Request AJAX
         $.ajax({
-            url: '<?php echo base_url("AdminHome/get_bay_by_gardu/"); ?>'+nama_gardu,
+            url: '<?php echo base_url("AdminHome/get_bay_by_gardu/"); ?>'+kode_gardu,
             type: 'GET',
             dataType: 'json',
             success: function(response){

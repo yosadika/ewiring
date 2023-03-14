@@ -121,32 +121,86 @@ class AdminHome extends MY_Controller {
 	{
 		
 		$id['id_pdf'] = $this->input->post("id_pdf");
+		$id_pdf = $this->input->post("id_pdf");
+
+		$nama_gardu = $this->input->post('nama_gardu');
+		$nama_bay = $this->input->post('nama_bay');
+		$judul_pdf = $this->input->post('judul_pdf');
+		$merk_peralatan = $this->input->post('merk_peralatan');
+		$nama_upt = $this->input->post('nama_upt');
+		$nama_tragi = $this->input->post('nama_tragi');
+		$level_tegangan = $this->input->post('radioTeganganperalatan');
+		$kategori_peralatan = $this->input->post('radioKategoriperalatan');
+		$kategori_bay = $this->input->post('radioKategorilanjutan');
+		$kategori_wiring = $this->input->post('radioKategoriwiring');
+		$sub_kategori_wiring = $this->input->post('radioSubkategoriwiring');
+		$keterangan = $this->input->post('keterangan');
+		$id_user_update = $this->input->post('id_user_update');
+		$user_update = $this->input->post('user_update');
 		
 
-		$data = array(
+		// Set upload directory
+		$upload_dir = './assets/uploads/bukuwiring/' . $nama_gardu . '/';
+		if (!file_exists($upload_dir)) {
+			mkdir($upload_dir, 0777, true);
+		}
+	
+		// Set file name and upload path
+		$config['file_name'] = $nama_bay . '_' . $sub_kategori_wiring . '_' . date('dmY') . '.pdf';
+		$config['upload_path'] = './../ewiring/' . $upload_dir;
+		$config['allowed_types'] = 'pdf';
+		$config['remove_spaces'] = TRUE;
+		$config['max_size'] = 1024 * 100; // 100 MB
+		$config['overwrite'] = TRUE; // Overwrite file with same name
 
-			'id_bay' 	        => $this->input->post("nama_bay"),
-			'id_gardu' 	        => $this->input->post("nama_gardu"),
-			'id_tragi' 	        => $this->input->post("nama_tragi"),
-			'id_upt' 		    => $this->input->post("nama_upt"),
-            'judul_pdf' 		=> $this->input->post("judul_pdf"),
-			'keterangan'		=> $this->input->post("keterangan"),
-			'user_update'		=> $this->input->post("user_update"),
-            'update_terakhir' 	=> $this->input->post("data_tanggal_update"),
-            
-			
-		);
+		$file_name = str_replace(' ', '_', $config['file_name']); //Config pdf name for db
+	
+		// Load upload library and initialize with config
+		$this->load->library('upload', $config);
+	
+		// Check if file is uploaded successfully
+		if ($this->upload->do_upload('pdf_file')) {
+			// File uploaded successfully
+			$upload_data = $this->upload->data();
+			$data = array(
+				'judul_pdf' => $judul_pdf,
+				'merk_peralatan' => $merk_peralatan,
+				'nama_upt' => $nama_upt,
+				'nama_tragi' => $nama_tragi,
+				'nama_gardu' => $nama_gardu,
+				'nama_bay' => $nama_bay,
+				'level_tegangan' => $level_tegangan,
+				'kategori_peralatan' => $kategori_peralatan,
+				'kategori_bay' => $kategori_bay,
+				'kategori_wiring' => $kategori_wiring,
+				'sub_kategori_wiring' => $sub_kategori_wiring,
+				'keterangan' => $keterangan,
+				'link_pdf' => base_url('assets/uploads/bukuwiring/' . $nama_gardu . '/' .  $file_name),
+				'id_user_update' => $id_user_update,
+				'user_update' => $user_update,
+			);
 
-		$this->data_bukuwiring->update_wiring($data, $id);
-
-		$this->session->set_flashdata('notif', '<div class="alert alert-success alert-dismissible fade show"> Success! data berhasil diupdate didatabase.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button></div>');
-
-		//redirect
-		redirect('admin/bukuwiring');
+			// Save PDF information to database
+			$this->load->model('Data_bukuwiring');
+			if ($this->Data_bukuwiring->update_wiring($data, $id)) {
+				$this->session->set_flashdata('success', 'Data berhasil disimpan');
+			} else {
+				$this->session->set_flashdata('gagalSimpan', 'Data tidak berhasil disimpan, silahkan coba lagi');
+			}
+			redirect('adminhome/edit_wiring/' . $id_pdf);
+		} else {			
+			$this->session->set_flashdata('gagalUpload', 'PDF tidak berhasil di Upload, silahkan coba lagi');
+			redirect('adminhome/edit_wiring/' . $id_pdf);
+		}	
 		
+	}
+
+	public function appoveWiring() {
+		
+		$data['data_wiring']				= $this->data_bukuwiring->get_all_unapprove();
+
+		$this->load->view('admin/admin_approve_wiring', $data);
+
 	}
 
 	public function hapus_wiring($id_alat)
@@ -189,21 +243,21 @@ class AdminHome extends MY_Controller {
 		$this->load->view('admin/tambah_bukuwiring', $data);
 	}
 
-	public function get_tragi_by_upt($nama_upt)
+	public function get_tragi_by_upt($kode_upt)
     {
-        $datatragi = $this->data_induk->get_tragi_by_upt($nama_upt);
+        $datatragi = $this->data_induk->get_tragi_by_upt($kode_upt);
         echo json_encode($datatragi);
     }
 
-	public function get_gardu_by_tragi($nama_tragi)
+	public function get_gardu_by_tragi($kode_tragi)
 	{
-		$datagardu = $this->data_induk->get_gardu_by_tragi($nama_tragi);
+		$datagardu = $this->data_induk->get_gardu_by_tragi($kode_tragi);
 		echo json_encode($datagardu);
 	}
 
-	public function get_bay_by_gardu($nama_gardu)
+	public function get_bay_by_gardu($kode_gardu)
 	{
-		$databay = $this->data_induk->get_bay_by_gardu($nama_gardu);
+		$databay = $this->data_induk->get_bay_by_gardu($kode_gardu);
 		echo json_encode($databay);
 	}
 

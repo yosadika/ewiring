@@ -111,6 +111,29 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-badge-check"></i>
+                <p>
+                Approve Data
+                <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo base_url() ?>AdminHome/approveWiring" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Buku Wiring</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Laporan Pemeliharaan</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item">
             <a href="<?php echo base_url() ?>index.php/User" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>

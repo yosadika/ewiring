@@ -26,32 +26,30 @@ class Data_induk extends CI_model{
 		return $this->db->get('tragi')->result_array();
     }
 
-	public function get_tragi_by_upt($nama_upt)
+	public function get_tragi_by_upt($kode_upt)
 	{
 		$query = $this->db->select("*")
-				 ->where('nama_upt', $nama_upt)
+				 ->where('kode_upt', $kode_upt)
                  ->from('tragi')       
 				 ->get();
 		return $query->result();
     }
 
-	public function get_gardu_by_tragi($nama_tragi)
+	public function get_gardu_by_tragi($kode_tragi)
 	{
-		$this->db->select('nama_gardu');
-		$this->db->from('gardu');
-		$this->db->where('nama_tragi', $nama_tragi);
-		$this->db->order_by('nama_gardu', 'ASC');
-		$query = $this->db->get();
+		$query = $this->db->select("*")
+				 ->where('kode_tragi', $kode_tragi)
+                 ->from('gardu')       
+				 ->get();
 		return $query->result();
 	}
 
-	public function get_bay_by_gardu($nama_gardu)
+	public function get_bay_by_gardu($kode_gardu)
 	{
-		$this->db->select('nama_bay');
-		$this->db->from('bay');
-		$this->db->where('nama_gardu', $nama_gardu);
-		$this->db->order_by('nama_bay', 'ASC');
-		$query = $this->db->get();
+		$query = $this->db->select("*")
+				 ->where('kode_gardu', $kode_gardu)
+                 ->from('bay')       
+				 ->get();
 		return $query->result();
 	}
 

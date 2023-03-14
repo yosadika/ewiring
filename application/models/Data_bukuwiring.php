@@ -12,6 +12,16 @@ class Data_bukuwiring extends CI_model{
 				 ->get();
 		return $query->result();
     }
+
+	public function get_all_unapprove()
+	{
+		$query = $this->db->select("pdf.*")
+                 ->from('pdf')
+				 ->where("status", '0' )
+				 ->order_by('id_pdf', 'ASC')
+				 ->get();
+		return $query->result();
+    }
     
     public function get_all_view()
 	{
