@@ -75,39 +75,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?php echo base_url() ?>AdminHome/tambahdatainduk" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                         Data Induk
-                        <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>UPT</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>ULTG</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Gardu</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Bay</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </li>

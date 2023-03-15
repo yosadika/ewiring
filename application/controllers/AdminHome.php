@@ -253,6 +253,19 @@ class AdminHome extends MY_Controller {
 		$this->load->view('admin/tambah_bukuwiring', $data);
 	}
 
+	public function tambahdatainduk() {
+
+		
+
+		$data = array(
+
+			'data_merk' 	=> $this->data_bukuwiring->data_merk_get(),
+			'data_upt' 		=> $this->data_induk->data_upt(),			
+		);
+
+		$this->load->view('admin/tambah_datainduk', $data);
+	}
+
 	public function get_tragi_by_upt($kode_upt)
     {
         $datatragi = $this->data_induk->get_tragi_by_upt($kode_upt);

@@ -189,7 +189,7 @@
                     <?php                            
                       foreach($data_gardu_upt as $hasil){
                     ?>
-                    <button class="btn btn-xs bg-info"><?php echo $hasil->nama_gardu ?></button>
+                    <a href="<?php echo base_url() ?>AdminHome/gardu/<?php echo $hasil->id_gardu ?>" class="btn btn-xs bg-info"><?php echo $hasil->nama_gardu ?></a>
                     <?php } ?>
                     </div>
                     </div>
