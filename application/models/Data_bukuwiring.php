@@ -84,6 +84,34 @@ class Data_bukuwiring extends CI_model{
  
 	}
 
+	public function tambahUPT($data)
+	{
+		
+
+		$query = $this->db->insert("upt", $data);
+
+		if($query){
+			return true;
+		}else{
+			return false;
+		}
+ 
+	}
+
+	public function tambahtragi($data)
+	{
+		
+
+		$query = $this->db->insert("tragi", $data);
+
+		if($query){
+			return true;
+		}else{
+			return false;
+		}
+ 
+	}
+
 	public function hapus_wiring($id_pdf)
 	{
 		// Ambil path file dari database
@@ -122,6 +150,19 @@ class Data_bukuwiring extends CI_model{
 		}
  
 	}
+
+	public function get_id_upt_by_name($nama_upt) {
+        $this->db->select('id_upt');
+        $this->db->from('upt');
+        $this->db->where('nama_upt', $nama_upt);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result) {
+            return $result->id_upt;
+        } else {
+            return false;
+        }
+    }
 	
 	
 

@@ -62,6 +62,52 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
+	public function data_tragi_forminduk()
+	{
+		$query = $this->db->select("*")
+                 ->from('tragi')                  
+				 ->order_by('id_tragi', 'ASC')
+				 ->get();
+		return $query->result();
+    }
+
+	public function data_gardu_forminduk()
+	{
+		$query = $this->db->select("*")
+                 ->from('gardu')                  
+				 ->order_by('id_gardu', 'ASC')
+				 ->get();
+		return $query->result();
+    }
+
+	public function data_upts()
+	{
+		
+		$query = $this->db
+				->get("upt");
+
+		if($query){
+			return $query->row();
+		}else{
+			return false;
+		}
+
+	}
+
+	public function data_tragis_forminduk()
+	{
+		
+		$query = $this->db
+				->get("tragi");
+
+		if($query){
+			return $query->row();
+		}else{
+			return false;
+		}
+
+	}
+
 	public function count_data_tragi($id_upt)
 	{
 		$this->db->where('id_upt', $id_upt);

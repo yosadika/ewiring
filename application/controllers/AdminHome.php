@@ -260,11 +260,107 @@ class AdminHome extends MY_Controller {
 		$data = array(
 
 			'data_merk' 	=> $this->data_bukuwiring->data_merk_get(),
-			'data_upt' 		=> $this->data_induk->data_upt(),			
+			'data_upt' 		=> $this->data_induk->data_upt(),
+			'data_tragi' 	=> $this->data_induk->data_tragi_forminduk(),			
+			'data_gardu' 	=> $this->data_induk->data_gardu_forminduk(),
+			
+			
+			'data_upt_simple' 		=> $this->data_induk->data_upts(),
+			'data_tragi_simple' 	=> $this->data_induk->data_tragis_forminduk(),
 		);
 
 		$this->load->view('admin/tambah_datainduk', $data);
 	}
+
+	public function tambahUPT() {
+
+		$nama_upt		= $this->input->post('nama_upt');
+		$inisial_upt	= $this->input->post('inisial_upt');
+		$keterangan_upt	= $this->input->post('keterangan_upt');
+		$kode_upt		= $this->input->post('kode_upt');
+		$id_user_upload = $this->input->post('id_user_upload');
+		$user_upload 	= $this->input->post('user_upload');
+		
+		// Set upload directory
+		$upload_dir = './android_login/foto_upt/';
+		if (!file_exists($upload_dir)) {
+			mkdir($upload_dir, 0777, true);
+		}
+	
+		// Set file name and upload path
+		$config['file_name'] = $nama_upt;
+		$config['upload_path'] = './../ewiring/' . $upload_dir;
+		$config['allowed_types'] = 'png';
+		$config['remove_spaces'] = TRUE;
+		$config['max_size'] = 1024 * 5; // 5 MB
+		$config['overwrite'] = TRUE; // Overwrite file with same name
+
+		$file_name = str_replace(' ', '_', $config['file_name']); //Config pdf name for db
+	
+		// Load upload library and initialize with config
+		$this->load->library('upload', $config);
+	
+		// Check if file is uploaded successfully
+		if ($this->upload->do_upload('pdf_file')) {
+			// File uploaded successfully
+			$upload_data = $this->upload->data();
+			$data = array(
+				'nama_upt' => $nama_upt,
+				'inisial_upt' => $inisial_upt,
+				'keterangan_upt' => $keterangan_upt,
+				'kode_upt' => $kode_upt,
+				'link_foto_upt' => base_url('android_login/foto_upt/' . $file_name . '.png'),
+				'id_user_upload' => $id_user_upload,
+				'user_upload' => $user_upload,
+			);
+
+			// Save PDF information to database
+			$this->load->model('Data_bukuwiring');
+			if ($this->Data_bukuwiring->tambahUPT($data)) {
+				$this->session->set_flashdata('success', 'Data berhasil disimpan');
+			} else {
+				$this->session->set_flashdata('gagalSimpan', 'Data tidak berhasil disimpan, silahkan coba lagi');
+			}
+			redirect('adminhome/tambahdatainduk/');
+		} else {			
+			$this->session->set_flashdata('gagalUpload', 'PDF tidak berhasil di Upload, silahkan coba lagi');
+			redirect('adminhome/tambahdatainduk/');
+		}
+
+		
+	}
+
+	public function tambahULTG() {
+
+		$nama_tragi = $this->input->post('nama_tragi');
+		$kode_tragi = $this->input->post('kode_tragi');
+		$nama_upt	= $this->input->post('nama_upt');
+		$kode_upt	= $this->input->post('kode_upt');
+		$id_upt		= $this->input->post('id_upt');
+
+		$data = array(
+
+			'nama_tragi' 	=> $nama_tragi,
+			'kode_tragi' 	=> $kode_tragi,
+			'nama_upt' 		=> $nama_upt,
+			'kode_upt' 		=> $kode_upt,
+			'id_upt' 		=> $id_upt,
+		);
+
+		$this->load->model('Data_bukuwiring');
+		$this->Data_bukuwiring->tambahtragi($data);
+		$this->session->set_flashdata('success', 'Data berhasil disimpan');
+
+		redirect('adminhome/tambahdatainduk/');
+	}
+
+	public function get_id_upt_by_name() {
+        $nama_upt = $this->input->post('nama_upt');
+        $this->load->model('Data_bukuwiring');
+        $id_upt = $this->Data_bukuwiring->get_id_upt_by_name($nama_upt);
+        echo json_encode(array("id_upt" => $id_upt));
+        exit();
+    }
 
 	public function get_tragi_by_upt($kode_upt)
     {

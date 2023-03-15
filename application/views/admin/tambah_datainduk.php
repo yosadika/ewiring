@@ -155,6 +155,8 @@
                                                     <div class="form-group">
                                                     <label>Lokasi UPT</label>
                                                     <input type="text" class="form-control" placeholder="contoh: Medan" name="nama_upt" required>
+                                                    <input type="hidden" value="<?php echo $this->session->userdata("user_nip") ?>" name="id_user_upload">
+                                                    <input type="hidden" value="<?php echo $this->session->userdata("user_nama") ?>" name="user_upload"> 
                                                     </div>
                                                     <!-- /.form-group -->
                                                 </div>
@@ -172,7 +174,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <label>Ketrangan Lokasi UPT</label>
+                                                    <label>Keterangan Lokasi UPT</label>
                                                     <input type="text" class="form-control" placeholder="contoh: Medan, Sumatera Utara" name="keterangan_upt" required>
                                                     </div>
                                                     <!-- /.form-group -->
@@ -180,7 +182,7 @@
                                                 <!-- /.col -->
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <label>Inisial UPT</label>
+                                                    <label>Kode UPT</label>
                                                     <input type="text" class="form-control" placeholder="contoh: UPTMDN" name="kode_upt" required>
                                                     </div>
                                                     <!-- /.form-group -->
@@ -201,7 +203,7 @@
                                         <div class="card-body">
                                             <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="pdf_file" id="foto_upt_upload" accept=".png" required>
-                                            <label class="custom-file-label" for="foto_upt_upload">Pilih file foto UPT... *png</label>
+                                            <label class="custom-file-label" for="foto_upt_upload">Pilih file foto UPT... *.png</label>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -213,86 +215,538 @@
                                 <?php echo form_close() ?>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                            <?php echo form_open_multipart('AdminHome/tambahULTG') ?>
-                                <!-- Form Utama -->
-                                <div class="card card-default">
-                                    <div class="row margin-top margin-side">
-                                        <div class="col d-flex">
-                                        <h3 class="card-title">Tambah Data ULTG</h3>
+                                <?php echo form_open_multipart('AdminHome/tambahULTG') ?>
+                                    <!-- Form Utama -->
+                                    <div class="card card-default">
+                                        <div class="row margin-top margin-side">
+                                            <div class="col d-flex">
+                                            <h3 class="card-title">Tambah Data ULTG</h3>
+                                            </div>
+                                            <div class="col">
+                                                <button class="btn btn-info float-right" type="submit" value="Upload">Simpan Data</button>
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <button class="btn btn-info float-right" type="submit" value="Upload">Simpan Data</button>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Nama ULTG</label>
+                                                    <input type="text" class="form-control" placeholder="contoh: Binjai" name="nama_tragi" required>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Kode ULTG</label>
+                                                    <input type="text" class="form-control" placeholder="contoh: BNJAI" name="kode_tragi" required>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">                                                    
+                                                    <label>Pilih UPT</label>
+                                                    <input type="hidden" value="<?php echo $data_upt_simple->id_upt ?>" name="id_upt" id="id_upt">
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_upt as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->nama_upt ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>                                                
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Kode UPT</label>
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_upt" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_upt as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->kode_upt ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
                                         </div>
+                                        <!-- /.card-body -->
                                     </div>
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <label>Nama ULTG</label>
-                                                <input type="text" class="form-control" placeholder="contoh: Binjai" name="nama_tragi" required>
-                                                </div>
-                                                <!-- /.form-group -->
-                                            </div>
-                                            <!-- /.col -->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <label>Kode ULTG</label>
-                                                <input type="text" class="form-control" placeholder="contoh: BNJAI" name="kode_tragi" required>
-                                                </div>
-                                                <!-- /.form-group -->
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /.row -->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">                                                    
-                                                <label>Pilih UPT</label>
-                                                <div class="select2-purple">
-                                                    <select class="form-control select2bs4" style="width: 100%;" name="merk_peralatan" required>
-                                                    <option value="" disabled selected>Pilih salah satu</option>
-                                                    <?php                            
-                                                        foreach($data_upt as $hasil){
-                                                    ?>
-                                                    <option><?php echo $hasil->nama_upt ?></option>
-                                                    <?php } ?> 
-                                                    </select>
-                                                </div>                                                
-                                                </div>
-                                                <!-- /.form-group -->
-                                            </div>
-                                            <!-- /.col -->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <label>Kode UPT</label>
-                                                <div class="select2-purple">
-                                                    <select class="form-control select2bs4" style="width: 100%;" name="merk_peralatan" required>
-                                                    <option value="" disabled selected>Pilih salah satu</option>
-                                                    <?php                            
-                                                        foreach($data_upt as $hasil){
-                                                    ?>
-                                                    <option><?php echo $hasil->kode_upt ?></option>
-                                                    <?php } ?> 
-                                                    </select>
-                                                </div>
-                                                </div>
-                                                <!-- /.form-group -->
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /.row -->
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
-                                <!-- /.card -->
-                            <?php echo form_close() ?>
+                                    <!-- /.card -->
+                                <?php echo form_close() ?>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                                Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+                                <?php echo form_open_multipart('AdminHome/tambahGardu') ?>
+                                    <!-- Form Utama -->
+                                    <div class="card card-default">
+                                        <div class="row margin-top margin-side">
+                                            <div class="col d-flex">
+                                            <h3 class="card-title">Tambah Data Gardu</h3>
+                                            </div>
+                                            <div class="col">
+                                                <button class="btn btn-info float-right" type="submit" value="Upload">Simpan Data</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Nama Gardu</label>
+                                                    <input type="text" class="form-control" placeholder="contoh: Binjai" name="nama_gardu" required>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Kode Gardu</label>
+                                                    <input type="text" class="form-control" placeholder="contoh: BNJAI" name="kode_gardu" required>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">                                                    
+                                                    <label>Pilih ULTG</label>
+                                                    <input type="hidden" value="<?php echo $data_tragi_simple->id_tragi ?>" name="id_tragi">
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_tragi" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_tragi as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->nama_tragi ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>                                                
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Kode ULTG</label>
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_tragi" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_tragi as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->kode_tragi ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">                                                    
+                                                    <label>Pilih UPT</label>
+                                                    <input type="hidden" value="<?php echo $data_upt_simple->id_upt ?>" name="id_upt">
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_upt as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->nama_upt ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>                                                
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Kode UPT</label>
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_upt" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_upt as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->kode_upt ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                    <!-- Form Detail -->
+                                    <div class="card card-default">
+                                        <div class="card-body">
+                                            <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label>Level Tegangan Gardu</label>
+                                                <!-- radio -->
+                                                    <div class="form-group clearfix row">
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="500 KV" id="radio500" name="radioTeganganperalatan" required>
+                                                            <label for="radio500">
+                                                            500 KV
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="275 KV" id="radio275" name="radioTeganganperalatan" required>
+                                                            <label for="radio275">
+                                                            275 KV
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="150 KV" id="radio150" name="radioTeganganperalatan" required>
+                                                            <label for="radio150">
+                                                            150 KV
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="70 KV" id="radio70" name="radioTeganganperalatan" required>
+                                                            <label for="radio70">
+                                                            70 KV
+                                                            </label>
+                                                        </div> 
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 form-group">
+                                                            <label>Sistem Tegangan Peralatan yang Terpasang</label>
+                                                            <!-- radio -->
+                                                            <div class="row form-group clearfix">
+                                                                <div class="col">
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="500 KV" id="checkbox500" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox500">
+                                                                        500 KV
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="275 KV" id="checkbox275" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox275">
+                                                                        275 KV
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="150 KV" id="checkbox150" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox150">
+                                                                        150 KV
+                                                                        </label>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="70 KV" id="checkbox70" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox70">
+                                                                        70 KV
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="20 KV" id="checkbox20" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox20">
+                                                                        20 KV
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="220 VAC" id="checkbox220" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox220">
+                                                                        220 VAC
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="110 VDC" id="checkbox110" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox110">
+                                                                        110 VDC
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="48 VDC" id="checkbox48" name="checkboxTeganganperalatan" required>
+                                                                        <label for="checkbox48">
+                                                                        48 VDC
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <label>Kategori Peralatan yang Terpasang</label>
+                                                            <!-- radio -->
+                                                            <div class="form-group clearfix row">
+                                                                <div class="col">
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="PENGHANTAR" id="checkboxPenghantar" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxPenghantar">
+                                                                    Penghantar
+                                                                    </label>
+                                                                </div>
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="TRAFO" id="checkboxTrafo" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxTrafo">
+                                                                    Trafo
+                                                                    </label>
+                                                                </div>
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="KOPEL" id="checkboxKopel" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxKopel">
+                                                                    Kopel
+                                                                    </label>
+                                                                </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="KAPASITOR" id="checkboxKapasitor" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxKapasitor">
+                                                                    Kapasitor
+                                                                    </label>
+                                                                </div>
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="DIAMETER" id="checkboxDiameter" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxDiameter">
+                                                                    Diameter
+                                                                    </label>
+                                                                </div>
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="BUSBAR" id="checkboxBusbar" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxBusbar">
+                                                                    Busbar dan Synchro
+                                                                    </label>
+                                                                </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="ACDC" id="checkboxAcdc" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxAcdc">
+                                                                    AC/DC
+                                                                    </label>
+                                                                </div>
+                                                                <div class="icheck-primary">
+                                                                    <input type="checkbox" value="ALAT PEREKAM" id="checkboxAlatperekam2" name="checkboxKategorilanjutan" required>
+                                                                    <label for="checkboxAlatperekam2">
+                                                                    Alat Perekam
+                                                                    </label>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+                                                <!-- /.form-group -->
+                                            </div>
+                                            <!-- /.col -->
+                                            
+                                            </div>
+                                            <!-- /.row -->
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                <?php echo form_close() ?>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                                <?php echo form_open_multipart('AdminHome/tambahBay') ?>
+                                    <!-- Form Utama -->
+                                    <div class="card card-default">
+                                        <div class="row margin-top margin-side">
+                                            <div class="col d-flex">
+                                            <h3 class="card-title">Tambah Data Bay</h3>
+                                            </div>
+                                            <div class="col">
+                                                <button class="btn btn-info float-right" type="submit" value="Upload">Simpan Data</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                    <label>Nama Bay</label>
+                                                    <input type="text" class="form-control" placeholder="contoh: BAY PHT 150 KV BINJAI - PAYA GELI 1" name="nama_bay" required>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-12 form-group">
+                                                    <label>Kategori Bay</label>
+                                                    <!-- radio -->
+                                                    <div class="form-group clearfix row">
+                                                        <div class="col">
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="PENGHANTAR" id="radioPenghantarbay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioPenghantarbay">
+                                                            Penghantar
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="TRAFO" id="radioTrafobay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioTrafobay">
+                                                            Trafo
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="KOPEL" id="radioKopelbay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioKopelbay">
+                                                            Kopel
+                                                            </label>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col">
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="KAPASITOR" id="radioKapasitorbay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioKapasitorbay">
+                                                            Kapasitor
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="DIAMETER" id="radioDiameterbay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioDiameterbay">
+                                                            Diameter
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="BUSBAR" id="radioBusbarbay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioBusbarbay">
+                                                            Busbar dan Synchro
+                                                            </label>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col">
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="ACDC" id="radioAcdcbay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioAcdcbay">
+                                                            AC/DC
+                                                            </label>
+                                                        </div>
+                                                        <div class="icheck-primary">
+                                                            <input type="radio" value="ALAT PEREKAM" id="radioAlatperekam2bay" name="radioKategorilanjutanbay" required>
+                                                            <label for="radioAlatperekam2bay">
+                                                            Alat Perekam
+                                                            </label>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.row -->
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                    <!-- Form Deatil -->
+                                    <div class="card card-default">
+                                        <div class="card-body">
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Nama Gardu</label>
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_gardu" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_gardu as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->nama_gardu ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label>Kode Gardu</label>
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_gardu" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_gardu as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->kode_gardu ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">                                                    
+                                                    <label>Pilih ULTG</label>
+                                                    <input type="hidden" value="<?php echo $data_tragi_simple->id_tragi ?>" name="id_tragi">
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_tragi" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_tragi as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->nama_tragi ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>                                                
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">                                                    
+                                                    <label>Pilih UPT</label>
+                                                    <input type="hidden" value="<?php echo $data_upt_simple->id_upt ?>" name="id_upt">
+                                                    <div class="select2-purple">
+                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" required>
+                                                        <option value="" disabled selected>Pilih salah satu</option>
+                                                        <?php                            
+                                                            foreach($data_upt as $hasil){
+                                                        ?>
+                                                        <option><?php echo $hasil->nama_upt ?></option>
+                                                        <?php } ?> 
+                                                        </select>
+                                                    </div>                                                
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                <?php echo form_close() ?>
                             </div>
                         </div>
                     </div>
@@ -381,6 +835,23 @@
             confirmButtonText: 'Konfirmasi'
         });
       <?php endif; ?>
+
+    $('select[name="nama_upt"]').on('change', function() {
+    var nama_upt = $(this).val();
+    if(nama_upt) {
+        $.ajax({
+            url: '<?php echo base_url('adminhome/get_id_upt_by_name'); ?>',
+            type: "POST",
+            dataType: "json",
+            data: {'nama_upt':nama_upt},
+            success: function(data) {
+                $('#id_upt').val(data.id_upt);
+            }
+        });
+    } else {
+        $('#id_upt').val('');
+    }
+    });
       
     });
   </script>
