@@ -162,7 +162,8 @@ class Data_induk extends CI_model{
     {
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -196,6 +197,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_peralatan', 'sistem dc');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -204,6 +206,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_peralatan', 'bay');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -212,6 +215,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_peralatan', 'alat perekam');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -268,6 +272,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'diameter');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -276,6 +281,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'penghantar');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -284,6 +290,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'trafo');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -293,6 +300,7 @@ class Data_induk extends CI_model{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'trafo');
 		$this->db->where('level_tegangan', '150 KV');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -302,6 +310,7 @@ class Data_induk extends CI_model{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'trafo');
 		$this->db->where('level_tegangan', '20 KV');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -310,6 +319,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'kopel');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -318,6 +328,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'kapasitor');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -326,6 +337,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('nama_gardu', $nama_gardu);
 		$this->db->where('kategori_bay', 'busbar');
+		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
@@ -335,7 +347,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'acdc')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -346,7 +359,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'alat perekam')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -357,7 +371,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'diameter')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -368,7 +383,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'penghantar')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -380,7 +396,8 @@ class Data_induk extends CI_model{
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'trafo')
 				 ->where_in('level_tegangan', array('150 KV', '275 KV'))
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -392,7 +409,8 @@ class Data_induk extends CI_model{
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'trafo')
 				 ->where('level_tegangan', '20 KV')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -403,7 +421,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'kopel')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -414,7 +433,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'kapasitor')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -425,7 +445,8 @@ class Data_induk extends CI_model{
         $query = $this->db->select("*")             
                  ->where('nama_gardu', $nama_gardu)
 				 ->where('kategori_bay', 'busbar')
-                 ->from('pdf')             
+                 ->from('pdf')
+				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();

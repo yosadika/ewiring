@@ -8,6 +8,7 @@ class Data_bukuwiring extends CI_model{
 	{
 		$query = $this->db->select("pdf.*")
                  ->from('pdf')
+				 ->where("status", '1' )
 				 ->order_by('id_pdf', 'ASC')
 				 ->get();
 		return $query->result();
@@ -83,9 +84,24 @@ class Data_bukuwiring extends CI_model{
  
 	}
 
-	public function hapus_wiring($id)
+	public function hapus_wiring($id_pdf)
 	{
-		$query = $this->db->delete("pdf", $id);
+		// Ambil path file dari database
+		$query = $this->db->get_where('pdf', array('id_pdf' => $id_pdf));
+		$row = $query->row();
+		$path = $row->link_pdf;
+		
+		// Konversi URL menjadi path file
+		$path = realpath($_SERVER["DOCUMENT_ROOT"] . parse_url($path, PHP_URL_PATH));
+		
+		// Hapus file dari folder
+		if (file_exists($path)) {
+			unlink($path);
+		}
+	
+		// Hapus data dari database
+		$this->db->where('id_pdf', $id_pdf);
+		$this->db->delete('pdf');
 
 		if($query){
 			return true;
@@ -95,6 +111,17 @@ class Data_bukuwiring extends CI_model{
 
 	}
 
+	public function terima_wiring($data, $id_pdf)
+	{
+		$query = $this->db->where('id_pdf', $id_pdf)->update("pdf", $data);
+
+		if($query){
+			return true;
+		}else{
+			return false;
+		}
+ 
+	}
 	
 	
 

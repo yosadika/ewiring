@@ -85,7 +85,7 @@ class AdminHome extends MY_Controller {
 		$data['data_buku_kapasitor']		= $this->data_induk->data_buku_kapasitor($nama_gardu);
 		$data['data_buku_busbar']			= $this->data_induk->data_buku_busbar($nama_gardu);
 		$data['data_buku_acdc']				= $this->data_induk->data_buku_acdc($nama_gardu);
-		$data['data_buku_alatperekam']				= $this->data_induk->data_buku_alatperekam($nama_gardu);
+		$data['data_buku_alatperekam']		= $this->data_induk->data_buku_alatperekam($nama_gardu);
 
 
 
@@ -97,6 +97,14 @@ class AdminHome extends MY_Controller {
 		$data['data_wiring']				= $this->data_bukuwiring->get_all();
 
 		$this->load->view('admin/bukuwiring', $data);
+
+	}
+
+	public function terimawiring() {
+		
+		$data['data_wiring']				= $this->data_bukuwiring->get_all_unapprove();
+
+		$this->load->view('admin/admin_approve_wiring', $data);
 
 	}
 
@@ -195,31 +203,31 @@ class AdminHome extends MY_Controller {
 		
 	}
 
-	public function appoveWiring() {
-		
-		$data['data_wiring']				= $this->data_bukuwiring->get_all_unapprove();
 
-		$this->load->view('admin/admin_approve_wiring', $data);
-
-	}
-
-	public function hapus_wiring($id_alat)
+	public function hapus_wiring($id_pdf)
 	{
-		if($this->data_pegawai->logged_id()) {
-		$id['id_alat'] = $this->uri->segment(3);
-		
-		$this->data_alat->hapus($id);
-		$this->data_alat->_deleteImage($id);
-        $this->session->set_flashdata('notif', '<div class="alert alert-danger alert-dismissible fade show"> Success! data berhasil dihapus dari database.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button></div>');
+		$this->data_bukuwiring->hapus_wiring($id_pdf);
+        $this->session->set_flashdata('success', 'Data berhasil dihapus');
 
 		//redirect
-		redirect('alat/');
-		}else{
-			redirect("login");
-		}
+		redirect('adminhome/terimawiring');
+		
+	}
+
+	public function terima_wiring($id_pdf)
+	{
+		$status = '1';
+
+		$data = array(
+			'status' => $status,
+		);
+
+		$this->data_bukuwiring->terima_wiring($data, $id_pdf);
+        $this->session->set_flashdata('success', 'Buku Wiring sudah tersedia untuk semua user');
+
+		//redirect
+		redirect('adminhome/terimawiring');
+		
 	}
 
 	public function logout() {

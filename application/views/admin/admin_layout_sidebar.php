@@ -121,7 +121,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo base_url() ?>AdminHome/approveWiring" class="nav-link">
+                    <a href="<?php echo base_url() ?>adminhome/terimawiring" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Buku Wiring</p>
                     </a>
