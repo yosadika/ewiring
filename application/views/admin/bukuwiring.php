@@ -17,6 +17,10 @@
   overflow-x: auto;
   max-width: 100%;
   }
+
+  .margin-left{
+    margin-left: 5px;
+  }
   
 </style>
 
@@ -129,7 +133,7 @@
                   
 
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="myModalLabel">Modal Title</h5>
@@ -156,6 +160,23 @@
           </div>
         </div>
 	    </div>
+      <div class="modal fade modal_hapus_alat" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Yakin Dihapus?</h5>
+                      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan</div>
+                  <div class="modal-footer">
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                      <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+                  </div>
+              </div>
+          </div>
+      </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -239,6 +260,7 @@ $(document).ready(function() {
     // tambahkan kode modal footer di sini
     var modalFooter = '<div>';
     modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '<a href="#!" onclick="deleteConfirm(\'<?php echo base_url(); ?>adminhome/hapus_wiring/' + data[9] + '\')" type="button" class="btn btn-danger margin-left">Hapus</a>';
     modalFooter += '</div>';
     $('#myModal .modal-footer').html(modalFooter);
     $('#myModal').modal('show');
@@ -246,7 +268,12 @@ $(document).ready(function() {
 });
 </script>
 
-
+<script>
+function deleteConfirm(url){
+    $('#btn-delete').attr('href', url);
+    $('.modal_hapus_alat').modal();
+}
+</script>
 
 
 
