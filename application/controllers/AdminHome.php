@@ -130,6 +130,7 @@ class AdminHome extends MY_Controller {
 		
 		$id['id_pdf'] = $this->input->post("id_pdf");
 		$id_pdf = $this->input->post("id_pdf");
+		$status = '0';
 
 		$nama_gardu = $this->input->post('nama_gardu');
 		$nama_bay = $this->input->post('nama_bay');
@@ -171,6 +172,7 @@ class AdminHome extends MY_Controller {
 			// File uploaded successfully
 			$upload_data = $this->upload->data();
 			$data = array(
+				'status' => $status,
 				'judul_pdf' => $judul_pdf,
 				'merk_peralatan' => $merk_peralatan,
 				'nama_upt' => $nama_upt,
@@ -191,7 +193,7 @@ class AdminHome extends MY_Controller {
 			// Save PDF information to database
 			$this->load->model('Data_bukuwiring');
 			if ($this->Data_bukuwiring->update_wiring($data, $id)) {
-				$this->session->set_flashdata('success', 'Data berhasil disimpan');
+				$this->session->set_flashdata('success', 'Data berhasil disimpan, buku wiring tersedia sampai perubahan disetujui admin');
 			} else {
 				$this->session->set_flashdata('gagalSimpan', 'Data tidak berhasil disimpan, silahkan coba lagi');
 			}
