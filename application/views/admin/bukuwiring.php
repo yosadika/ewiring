@@ -139,7 +139,13 @@
 
                   </tbody>
                 </table>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+	    </div>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -155,12 +161,6 @@
                       </div>
                     </div>
                   </div>
-              </div>
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-	    </div>
       <div class="modal fade modal_hapus_alat" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
