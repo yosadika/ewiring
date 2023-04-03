@@ -162,7 +162,7 @@
                     <div class="card-header card-header-padding-topbottom">
                       <h4 class="card-title w-100 card-title-font-size">
                         <a class="d-block w-100 text-black" data-toggle="collapse" href="#collapseOne">
-                          ULTG <span class="float-right badge bg-primary"><?php echo $count_tragi; ?></span>
+                          ULTG <span class="float-right badge bg-secondary"><?php echo $count_tragi; ?></span>
                         </a>
                       </h4>
                     </div>
@@ -198,7 +198,7 @@
                     <div class="card-header card-header-padding-topbottom">
                       <h4 class="card-title w-100 card-title-font-size">
                         <span class="d-block w-100 text-black">
-                          Bay <span class="float-right badge bg-success"><?php echo $count_bay; ?></span>
+                          Bay <span class="float-right badge bg-gray-dark"><?php echo $count_bay; ?></span>
                         </span>
                       </h4>
                     </div>

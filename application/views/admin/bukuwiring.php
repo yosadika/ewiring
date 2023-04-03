@@ -254,7 +254,7 @@ $(document).ready(function() {
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal .modal-body').html(tableContent);
     $('#myModal .modal-title').html(data[10]);
     // tambahkan kode modal footer di sini

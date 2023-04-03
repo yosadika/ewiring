@@ -259,7 +259,7 @@
                     </div>
                     <div class="product-info">
                       <a href="javascript:void(0)" class="product-title">HAR PMO ULTG Binjai
-                        <span class="badge badge-info float-right">Reschedule</span></a>
+                        <span class="badge badge-secondary float-right">Reschedule</span></a>
                       <span class="product-description">
                         Pengujian Kapasitas Baterai Bank 2 110VDC GI Namorambe
                       </span>
@@ -288,7 +288,7 @@
                     </div>
                     <div class="product-info">
                       <a href="javascript:void(0)" class="product-title">HAR JAR ULTG Binjai
-                        <span class="badge badge-success float-right">Selesai</span></a>
+                        <span class="badge badge-secondary float-right">Selesai</span></a>
                       <span class="product-description">
                         Validasi ROW dan Pengukuran Tahanan Pentanahan Tower 184-180 PSUSU-BNJAI
                       </span>
