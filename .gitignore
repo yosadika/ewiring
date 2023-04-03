@@ -31,6 +31,9 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 
+#ignore config file
+application/config/config.php
+
 # ignore android_login folder
 android_login/
 
