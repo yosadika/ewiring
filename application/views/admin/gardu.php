@@ -387,7 +387,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-acdc .modal-body').html(tableContent);
     $('#myModal-acdc .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -405,7 +405,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-alatperekam .modal-body').html(tableContent);
     $('#myModal-alatperekam .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -423,7 +423,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-table1 .modal-body').html(tableContent);
     $('#myModal-table1 .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -441,7 +441,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-dia .modal-body').html(tableContent);
     $('#myModal-dia .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -459,7 +459,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-pht .modal-body').html(tableContent);
     $('#myModal-pht .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -477,7 +477,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-trafohv .modal-body').html(tableContent);
     $('#myModal-trafohv .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -495,7 +495,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-trafolv .modal-body').html(tableContent);
     $('#myModal-trafolv .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -513,7 +513,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-kopel .modal-body').html(tableContent);
     $('#myModal-kopel .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -531,7 +531,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-kapasitor .modal-body').html(tableContent);
     $('#myModal-kapasitor .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
@@ -549,7 +549,7 @@
     tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
     tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal-busbar .modal-body').html(tableContent);
     $('#myModal-busbar .modal-title').html(data[3]);
     // tambahkan kode modal footer di sini
