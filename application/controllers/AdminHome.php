@@ -581,24 +581,43 @@ class AdminHome extends MY_Controller {
         echo json_encode(array("kode_upt" => $kode_upt));
         exit();
 	}
+
+	public function get_data_bay_by_name_idbay() {
+		$nama_bay = $this->input->post('nama_bay');
+        $this->load->model('Data_bukuwiring');
+        $id_bay = $this->Data_bukuwiring->get_data_bay_by_name_idbay($nama_bay);
+        echo json_encode(array("id_bay" => $id_bay));
+        exit();
+	}
+
+	public function get_data_bay_by_name_jumlahwiring() {
+		$nama_bay = $this->input->post('nama_bay');
+        $this->load->model('Data_bukuwiring');
+        $bay_pdf_requirement = $this->Data_bukuwiring->get_data_bay_by_name_jumlahwiring($nama_bay);
+        echo json_encode(array("bay_pdf_requirement" => $bay_pdf_requirement));
+        exit();
+	}
 	
 
 	public function tambahBuku() {
 		// Get form input values
-		$nama_gardu = $this->input->post('nama_gardu');
-		$nama_bay = $this->input->post('nama_bay');
-		$judul_pdf = $this->input->post('judul_pdf');
-		$merk_peralatan = $this->input->post('merk_peralatan');
-		$nama_upt = $this->input->post('nama_upt');
-		$nama_tragi = $this->input->post('nama_tragi');
-		$level_tegangan = $this->input->post('radioTeganganperalatan');
+		$nama_gardu 		= $this->input->post('nama_gardu');
+		$id_bay 			= $this->input->post('id_bay');
+		$nama_bay 			= $this->input->post('nama_bay');
+		$jumlah_wiring 		= $this->input->post('jumlah_wiring');
+		$judul_pdf 			= $this->input->post('judul_pdf');
+		$merk_peralatan 	= $this->input->post('merk_peralatan');
+		$nama_upt 			= $this->input->post('nama_upt');
+		$nama_tragi 		= $this->input->post('nama_tragi');
+		$level_tegangan 	= $this->input->post('radioTeganganperalatan');
 		$kategori_peralatan = $this->input->post('radioKategoriperalatan');
-		$kategori_bay = $this->input->post('radioKategorilanjutan');
-		$kategori_wiring = $this->input->post('radioKategoriwiring');
-		$sub_kategori_wiring = $this->input->post('radioSubkategoriwiring');
-		$keterangan = $this->input->post('keterangan');
-		$id_user = $this->input->post('id_user');
-		$user_upload = $this->input->post('user_upload');
+		$kategori_bay 		= $this->input->post('radioKategorilanjutan');
+		$kategori_wiring 	= $this->input->post('radioKategoriwiring');
+		$sub_kategori_wiring= $this->input->post('radioSubkategoriwiring');
+		$kode_drawing 		= $this->input->post('kode_drawing');
+		$keterangan 		= $this->input->post('keterangan');
+		$id_user 			= $this->input->post('id_user');
+		$user_upload 		= $this->input->post('user_upload');
 	
 		// Set upload directory
 		$upload_dir = './assets/uploads/bukuwiring/' . $nama_gardu . '/';
@@ -624,21 +643,24 @@ class AdminHome extends MY_Controller {
 			// File uploaded successfully
 			$upload_data = $this->upload->data();
 			$data = array(
-				'judul_pdf' => $judul_pdf,
-				'merk_peralatan' => $merk_peralatan,
-				'nama_upt' => $nama_upt,
-				'nama_tragi' => $nama_tragi,
-				'nama_gardu' => $nama_gardu,
-				'nama_bay' => $nama_bay,
-				'level_tegangan' => $level_tegangan,
-				'kategori_peralatan' => $kategori_peralatan,
-				'kategori_bay' => $kategori_bay,
-				'kategori_wiring' => $kategori_wiring,
-				'sub_kategori_wiring' => $sub_kategori_wiring,
-				'keterangan' => $keterangan,
-				'link_pdf' => base_url('assets/uploads/bukuwiring/' . $nama_gardu . '/' .  $file_name),
-				'id_user' => $id_user,
-				'user_upload' => $user_upload,
+				'judul_pdf' 			=> $judul_pdf,
+				'merk_peralatan' 		=> $merk_peralatan,
+				'nama_upt' 				=> $nama_upt,
+				'nama_tragi' 			=> $nama_tragi,
+				'nama_gardu' 			=> $nama_gardu,
+				'id_bay' 				=> $id_bay,
+				'nama_bay' 				=> $nama_bay,
+				'bay_pdf_requirement' 	=> $jumlah_wiring,
+				'level_tegangan' 		=> $level_tegangan,
+				'kategori_peralatan' 	=> $kategori_peralatan,
+				'kategori_bay' 			=> $kategori_bay,
+				'kategori_wiring' 		=> $kategori_wiring,
+				'sub_kategori_wiring' 	=> $sub_kategori_wiring,
+				'kode_drawing' 			=> $kode_drawing,
+				'keterangan' 			=> $keterangan,
+				'link_pdf' 				=> 'assets/uploads/bukuwiring/' . $nama_gardu . '/' .  $file_name,
+				'id_user' 				=> $id_user,
+				'user_upload' 			=> $user_upload,
 			);
 
 			// Save PDF information to database

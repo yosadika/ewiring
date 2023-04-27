@@ -374,6 +374,32 @@ class Data_bukuwiring extends CI_model{
         }
     }
 
+	public function get_data_bay_by_name_jumlahwiring($nama_bay) {
+        $this->db->select('bay_pdf_requirement');
+        $this->db->from('bay');
+        $this->db->where('nama_bay', $nama_bay);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result) {
+            return $result->bay_pdf_requirement;
+        } else {
+            return false;
+        }
+    }
+
+	public function get_data_bay_by_name_idbay($nama_bay) {
+        $this->db->select('id_bay');
+        $this->db->from('bay');
+        $this->db->where('nama_bay', $nama_bay);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result) {
+            return $result->id_bay;
+        } else {
+            return false;
+        }
+    }
+
 
 
 

@@ -197,6 +197,8 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Pilih Bay</label>
+                      <input type="hidden" class="form-control" value="" name="id_bay" id="id_bay" readonly>
+                      <input type="hidden" class="form-control" value="" name="jumlah_wiring" id="jumlah_wiring" readonly>
                       <div class="select2-purple">
                         <select class="form-control select2bs4" style="width: 100%;" name="nama_bay" id="nama_bay" required>
                           <option value="" disabled selected>Pilih salah satu</option>
@@ -484,6 +486,13 @@
                   <!-- /.col -->
                   <div class="col-md-12">
                     <div class="form-group">
+                      <label>Kode Drawing Peralatan</label>
+                      <input type="text" class="form-control" id="kode_drawing" placeholder="Kode drawing. Contoh: X4018970-305" name="kode_drawing" required>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-12">
+                    <div class="form-group">
                       <label>Keterangan Tambahan</label>
                       <textarea class="form-control" rows="3" placeholder="Ini adalah buku Internal Trafo merk Unindo..." name="keterangan" id="keterangan" required></textarea>
                     </div>
@@ -665,6 +674,40 @@
             }
         });
       });
+
+      $('select[name="nama_bay"]').on('change', function() {
+            var nama_bay = $(this).val();
+            if(nama_bay) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_bay_by_name_idbay'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_bay':nama_bay},
+                    success: function(data) {
+                        $('#id_bay').val(data.id_bay);
+                    }
+                });
+            } else {
+                $('#id_bay').val('');
+            }
+        });
+
+        $('select[name="nama_bay"]').on('change', function() {
+            var nama_bay = $(this).val();
+            if(nama_bay) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_bay_by_name_jumlahwiring'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_bay':nama_bay},
+                    success: function(data) {
+                        $('#jumlah_wiring').val(data.bay_pdf_requirement);
+                    }
+                });
+            } else {
+                $('#jumlah_wiring').val('');
+            }
+        });
 
       
     });
