@@ -143,7 +143,7 @@
                 <a href="#" class="row"> 
                   <div class="col">           
                     <div class="widget-user-image">
-                      <img class="img-circle elevation-2" src="<?php echo $hasil->link_foto_upt ?>" alt="User Avatar">
+                      <img class="img-circle elevation-2" src="<?php echo base_url(); ?><?php echo $hasil->link_foto_upt ?>" alt="User Avatar">
                     </div>
                     <!-- /.widget-user-image -->
                     <h3 class="widget-user-username">UPT <?php echo $hasil->nama_upt ?></h3>

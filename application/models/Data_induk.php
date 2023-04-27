@@ -185,6 +185,16 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
+	public function get_foto_upt_for_tragi($nama_tragi)
+    {
+        $this->db->select('upt.link_foto_upt');
+		$this->db->from('upt');
+		$this->db->join('tragi', 'upt.id_upt = tragi.id_upt');
+		$this->db->where('tragi.nama_tragi', $nama_tragi);
+		$query = $this->db->get();
+		return $query->row()->link_foto_upt;
+    }
+
 	public function get_data_gardu2($id_gardu)
     {
         $query = $this->db->select("*")

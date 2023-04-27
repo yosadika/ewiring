@@ -34,7 +34,7 @@ class AdminHome extends MY_Controller {
 		$this->load->view('admin/upt', $data);
 	}
 
-	public function ULTG($id_tragi)
+	public function ultg($id_tragi)
 	{
 		$id_tragi = $this->uri->segment(3);
 		
@@ -46,6 +46,7 @@ class AdminHome extends MY_Controller {
 		$data['jumlah_penghantar']		= $this->data_induk->count_jumlah_penghantar($nama_tragi);
 		$data['jumlah_baylain']			= $this->data_induk->count_jumlah_baylain($nama_tragi);
 		$data['data_gardu']				= $this->data_induk->get_data_gardu($nama_tragi);
+		$data['foto_upt']				= $this->data_induk->get_foto_upt_for_tragi($nama_tragi);
 
 		$this->load->view('admin/ultg', $data);
 	}
@@ -330,7 +331,7 @@ class AdminHome extends MY_Controller {
 		
 	}
 
-	public function tambahULTG() {
+	public function tambahtragi() {
 
 		$nama_tragi = $this->input->post('nama_tragi');
 		$kode_tragi = $this->input->post('kode_tragi');
@@ -349,6 +350,95 @@ class AdminHome extends MY_Controller {
 
 		$this->load->model('Data_bukuwiring');
 		$this->Data_bukuwiring->tambahtragi($data);
+		$this->session->set_flashdata('success', 'Data berhasil disimpan');
+
+		redirect('adminhome/tambahdatainduk/');
+	}
+
+	public function tambahgardu() {
+
+		$nama_gardu 					= $this->input->post('nama_gardu');
+		$kode_gardu 					= $this->input->post('kode_gardu');
+		$id_tragi 						= $this->input->post('id_tragi');
+		$nama_tragi 					= $this->input->post('nama_tragi');
+		$kode_tragi 					= $this->input->post('kode_tragi');
+		$id_upt							= $this->input->post('id_upt');
+		$nama_upt						= $this->input->post('nama_upt');
+		$kode_upt						= $this->input->post('kode_upt');
+		$level_tegangan					= $this->input->post('radioTeganganperalatan');
+		$level_tegangan_yang_ada		= implode(',', $this->input->post('checkboxTeganganperalatan'));
+		$kategori_peralatan_yang_ada	= implode(',', $this->input->post('checkboxKategorilanjutan'));
+
+		$data = array(
+
+			'nama_gardu' 					=> $nama_gardu,
+			'kode_gardu' 					=> $kode_gardu,
+			'id_tragi' 						=> $id_tragi,
+			'nama_tragi' 					=> $nama_tragi,
+			'kode_tragi' 					=> $kode_tragi,
+			'id_upt' 						=> $id_upt,
+			'nama_upt' 						=> $nama_upt,
+			'kode_upt' 						=> $kode_upt,
+			'level_tegangan' 				=> $level_tegangan,
+			'level_tegangan_yang_ada' 		=> $level_tegangan_yang_ada,
+			'kategori_peralatan_yang_ada' 	=> $kategori_peralatan_yang_ada,
+		);
+
+		// tambahkan kode berikut untuk melakukan debugging
+		//echo '<pre>';
+		//var_dump($data);
+		//print_r($data);
+		//echo '</pre>';
+		//die();
+
+		$this->load->model('Data_bukuwiring');
+		$this->Data_bukuwiring->tambahgardu($data);
+		$this->session->set_flashdata('success', 'Data berhasil disimpan');
+
+		redirect('adminhome/tambahdatainduk/');
+	}
+
+	public function tambahbay() {
+
+		$nama_bay 						= $this->input->post('nama_bay');
+		$kategori_bay 					= $this->input->post('radioKategorilanjutanbay');
+		$id_gardu 						= $this->input->post('id_gardu');
+		$nama_gardu 					= $this->input->post('nama_gardu');
+		$kode_gardu 					= $this->input->post('kode_gardu');
+		$id_tragi 						= $this->input->post('id_tragi');
+		$nama_tragi 					= $this->input->post('nama_tragi');
+		$kode_tragi 					= $this->input->post('kode_tragi');
+		$id_upt							= $this->input->post('id_upt');
+		$nama_upt						= $this->input->post('nama_upt');
+		$kode_upt						= $this->input->post('kode_upt');
+		$jumlah_wiring					= $this->input->post('jumlah_wiring');
+		$jumlah_wiring         			= intval($jumlah_wiring);
+
+		$data = array(
+
+			'nama_bay' 						=> $nama_bay,
+			'kategori_bay' 					=> $kategori_bay,
+			'id_gardu' 						=> $id_gardu,
+			'nama_gardu' 					=> $nama_gardu,
+			'kode_gardu' 					=> $kode_gardu,
+			'id_tragi' 						=> $id_tragi,
+			'nama_tragi' 					=> $nama_tragi,
+			'kode_tragi' 					=> $kode_tragi,
+			'id_upt' 						=> $id_upt,
+			'nama_upt' 						=> $nama_upt,
+			'kode_upt' 						=> $kode_upt,
+			'bay_pdf_requirement' 			=> $jumlah_wiring,
+		);
+
+		// tambahkan kode berikut untuk melakukan debugging
+		//echo '<pre>';
+		//var_dump($data);
+		//print_r($data);
+		//echo '</pre>';
+		//die();
+
+		$this->load->model('Data_bukuwiring');
+		$this->Data_bukuwiring->tambahbay($data);
 		$this->session->set_flashdata('success', 'Data berhasil disimpan');
 
 		redirect('adminhome/tambahdatainduk/');
@@ -379,6 +469,119 @@ class AdminHome extends MY_Controller {
 		$databay = $this->data_induk->get_bay_by_gardu($kode_gardu);
 		echo json_encode($databay);
 	}
+
+	public function get_kode_upt_by_name() {
+		$nama_upt = $this->input->post('nama_upt');
+        $this->load->model('Data_bukuwiring');
+        $kode_upt = $this->Data_bukuwiring->get_kode_upt_by_name($nama_upt);
+        echo json_encode(array("kode_upt" => $kode_upt));
+        exit();
+	}
+
+	public function get_data_tragi_by_name_idtragi() {
+		$nama_tragi = $this->input->post('nama_tragi');
+        $this->load->model('Data_bukuwiring');
+        $id_tragi = $this->Data_bukuwiring->get_data_tragi_by_name_idtragi($nama_tragi);
+        echo json_encode(array("id_tragi" => $id_tragi));
+        exit();
+	}
+
+	public function get_data_tragi_by_name_kodetragi() {
+		$nama_tragi = $this->input->post('nama_tragi');
+        $this->load->model('Data_bukuwiring');
+        $kode_tragi = $this->Data_bukuwiring->get_data_tragi_by_name_kodetragi($nama_tragi);
+        echo json_encode(array("kode_tragi" => $kode_tragi));
+        exit();
+	}
+
+	public function get_data_tragi_by_name_idupt() {
+		$nama_tragi = $this->input->post('nama_tragi');
+        $this->load->model('Data_bukuwiring');
+        $id_upt = $this->Data_bukuwiring->get_data_tragi_by_name_idupt($nama_tragi);
+        echo json_encode(array("id_upt" => $id_upt));
+        exit();
+	}
+
+	public function get_data_tragi_by_name_namaupt() {
+		$nama_tragi = $this->input->post('nama_tragi');
+        $this->load->model('Data_bukuwiring');
+        $nama_upt = $this->Data_bukuwiring->get_data_tragi_by_name_namaupt($nama_tragi);
+        echo json_encode(array("nama_upt" => $nama_upt));
+        exit();
+	}
+
+	public function get_data_tragi_by_name_kodeupt() {
+		$nama_tragi = $this->input->post('nama_tragi');
+        $this->load->model('Data_bukuwiring');
+        $kode_upt = $this->Data_bukuwiring->get_data_tragi_by_name_kodeupt($nama_tragi);
+        echo json_encode(array("kode_upt" => $kode_upt));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_idgardu() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $id_gardu = $this->Data_bukuwiring->get_data_gardu_by_name_idgardu($nama_gardu);
+        echo json_encode(array("id_gardu" => $id_gardu));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_kodegardu() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $kode_gardu = $this->Data_bukuwiring->get_data_gardu_by_name_kodegardu($nama_gardu);
+        echo json_encode(array("kode_gardu" => $kode_gardu));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_idtragi() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $id_tragi = $this->Data_bukuwiring->get_data_gardu_by_name_idtragi($nama_gardu);
+        echo json_encode(array("id_tragi" => $id_tragi));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_namatragi() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $nama_tragi = $this->Data_bukuwiring->get_data_gardu_by_name_namatragi($nama_gardu);
+        echo json_encode(array("nama_tragi" => $nama_tragi));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_kodetragi() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $kode_tragi = $this->Data_bukuwiring->get_data_gardu_by_name_kodetragi($nama_gardu);
+        echo json_encode(array("kode_tragi" => $kode_tragi));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_idupt() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $id_upt = $this->Data_bukuwiring->get_data_gardu_by_name_idupt($nama_gardu);
+        echo json_encode(array("id_upt" => $id_upt));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_namaupt() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $nama_upt = $this->Data_bukuwiring->get_data_gardu_by_name_namaupt($nama_gardu);
+        echo json_encode(array("nama_upt" => $nama_upt));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_kodeupt() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $kode_upt = $this->Data_bukuwiring->get_data_gardu_by_name_kodeupt($nama_gardu);
+        echo json_encode(array("kode_upt" => $kode_upt));
+        exit();
+	}
+	
 
 	public function tambahBuku() {
 		// Get form input values

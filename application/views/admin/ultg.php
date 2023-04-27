@@ -115,7 +115,7 @@
               </div>
               <?php } ?>  
               <div class="widget-user-image">
-                <img class="img-circle elevation-2" src="<?php echo base_url(); ?>android_login/foto_upt/medan.png" alt="User Avatar">
+                <img class="img-circle elevation-2" src="<?php echo base_url(); ?><?php echo $foto_upt ?>" alt="User Avatar">
               </div>
               <div class="card-footer">
                 <div class="row">

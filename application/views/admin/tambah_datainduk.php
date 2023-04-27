@@ -163,7 +163,7 @@
                                                 <!-- /.col -->
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <label>Inisial UPT</label>
+                                                    <label>Nama UPT</label>
                                                     <input type="text" class="form-control" placeholder="contoh: UPT Medan" name="inisial_upt" required>
                                                     </div>
                                                     <!-- /.form-group -->
@@ -215,7 +215,7 @@
                                 <?php echo form_close() ?>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                <?php echo form_open_multipart('AdminHome/tambahULTG') ?>
+                                <?php echo form_open_multipart('AdminHome/tambahtragi') ?>
                                     <!-- Form Utama -->
                                     <div class="card card-default">
                                         <div class="row margin-top margin-side">
@@ -248,40 +248,31 @@
                                             </div>
                                             <!-- /.row -->
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">                                                    
+                                            <div class="col-md-6">
+                                                <div class="form-group">                                                    
                                                     <label>Pilih UPT</label>
-                                                    <input type="hidden" value="<?php echo $data_upt_simple->id_upt ?>" name="id_upt" id="id_upt">
+                                                    <input type="hidden" class="form-control" value="" name="id_upt" id="id_upt">
                                                     <div class="select2-purple">
                                                         <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
+                                                            <option value="" disabled selected>Pilih salah satu</option>
+                                                            <?php                            
                                                             foreach($data_upt as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->nama_upt ?></option>
-                                                        <?php } ?> 
+                                                            ?>
+                                                            <option><?php echo $hasil->nama_upt ?></option>
+                                                            <?php } ?> 
                                                         </select>
                                                     </div>                                                
-                                                    </div>
-                                                    <!-- /.form-group -->
                                                 </div>
-                                                <!-- /.col -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                    <label>Kode UPT</label>
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_upt" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_upt as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->kode_upt ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
+                                                <!-- /.form-group -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Kode UPT</label>                                                    
+                                                    <input class="form-control" value="" name="kode_upt" id="kode_upt" readonly>
                                                 </div>
+                                                <!-- /.form-group -->
+                                            </div>
                                                 <!-- /.col -->
                                             </div>
                                             <!-- /.row -->
@@ -328,7 +319,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">                                                    
                                                     <label>Pilih ULTG</label>
-                                                    <input type="hidden" value="<?php echo $data_tragi_simple->id_tragi ?>" name="id_tragi">
+                                                    <input type="hidden" class="form-control" value="" name="id_tragi" id="id_tragi" readonly>
                                                     <div class="select2-purple">
                                                         <select class="form-control select2bs4" style="width: 100%;" name="nama_tragi" required>
                                                         <option value="" disabled selected>Pilih salah satu</option>
@@ -346,16 +337,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                     <label>Kode ULTG</label>
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_tragi" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_tragi as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->kode_tragi ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>
+                                                    <input class="form-control" name="kode_tragi" id="kode_tragi" value="" readonly></input>
                                                     </div>
                                                     <!-- /.form-group -->
                                                 </div>
@@ -363,40 +345,22 @@
                                             </div>
                                             <!-- /.row -->
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">                                                    
-                                                    <label>Pilih UPT</label>
-                                                    <input type="hidden" value="<?php echo $data_upt_simple->id_upt ?>" name="id_upt">
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_upt as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->nama_upt ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>                                                
-                                                    </div>
-                                                    <!-- /.form-group -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">                                                    
+                                                    <label>UPT</label>                                                    
+                                                    <input type="hidden" class="form-control" value="" name="id_upt" id="id_upt2" readonly>
+                                                    <input class="form-control" name="nama_upt" id="nama_upt2" value="" readonly></input>                                               
                                                 </div>
-                                                <!-- /.col -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
+                                                <!-- /.form-group -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
                                                     <label>Kode UPT</label>
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_upt" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_upt as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->kode_upt ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
+                                                    <input class="form-control" name="kode_upt" id="kode_upt2" value="" readonly></input>
                                                 </div>
+                                                <!-- /.form-group -->
+                                            </div>
                                                 <!-- /.col -->
                                             </div>
                                             <!-- /.row -->
@@ -441,59 +405,59 @@
                                                     <div class="row">
                                                         <div class="col-md-6 form-group">
                                                             <label>Sistem Tegangan Peralatan yang Terpasang</label>
-                                                            <!-- radio -->
+                                                            <!-- multiple -->
                                                             <div class="row form-group clearfix">
                                                                 <div class="col">
                                                                     <div class="icheck-primary">
-                                                                        <input type="checkbox" value="500 KV" id="checkbox500" name="checkboxTeganganperalatan" required>
+                                                                        <input type="checkbox" value="500 KV" id="checkbox500" name="checkboxTeganganperalatan[]">
                                                                         <label for="checkbox500">
-                                                                        500 KV
+                                                                            500 KV
                                                                         </label>
                                                                     </div>
                                                                     <div class="icheck-primary">
-                                                                        <input type="checkbox" value="275 KV" id="checkbox275" name="checkboxTeganganperalatan" required>
+                                                                        <input type="checkbox" value="275 KV" id="checkbox275" name="checkboxTeganganperalatan[]">
                                                                         <label for="checkbox275">
-                                                                        275 KV
+                                                                            275 KV
                                                                         </label>
                                                                     </div>
                                                                     <div class="icheck-primary">
-                                                                        <input type="checkbox" value="150 KV" id="checkbox150" name="checkboxTeganganperalatan" required>
+                                                                        <input type="checkbox" value="150 KV" id="checkbox150" name="checkboxTeganganperalatan[]">
                                                                         <label for="checkbox150">
-                                                                        150 KV
-                                                                        </label>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                    <div class="icheck-primary">
-                                                                        <input type="checkbox" value="70 KV" id="checkbox70" name="checkboxTeganganperalatan" required>
-                                                                        <label for="checkbox70">
-                                                                        70 KV
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="icheck-primary">
-                                                                        <input type="checkbox" value="20 KV" id="checkbox20" name="checkboxTeganganperalatan" required>
-                                                                        <label for="checkbox20">
-                                                                        20 KV
+                                                                            150 KV
                                                                         </label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col">
                                                                     <div class="icheck-primary">
-                                                                        <input type="checkbox" value="220 VAC" id="checkbox220" name="checkboxTeganganperalatan" required>
+                                                                        <input type="checkbox" value="70 KV" id="checkbox70" name="checkboxTeganganperalatan[]">
+                                                                        <label for="checkbox70">
+                                                                            70 KV
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="20 KV" id="checkbox20" name="checkboxTeganganperalatan[]">
+                                                                        <label for="checkbox20">
+                                                                            20 KV
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="icheck-primary">
+                                                                        <input type="checkbox" value="220 VAC" id="checkbox220" name="checkboxTeganganperalatan[]">
                                                                         <label for="checkbox220">
-                                                                        220 VAC
+                                                                            220 VAC
                                                                         </label>
                                                                     </div>
                                                                     <div class="icheck-primary">
-                                                                        <input type="checkbox" value="110 VDC" id="checkbox110" name="checkboxTeganganperalatan" required>
+                                                                        <input type="checkbox" value="110 VDC" id="checkbox110" name="checkboxTeganganperalatan[]">
                                                                         <label for="checkbox110">
-                                                                        110 VDC
+                                                                            110 VDC
                                                                         </label>
                                                                     </div>
                                                                     <div class="icheck-primary">
-                                                                        <input type="checkbox" value="48 VDC" id="checkbox48" name="checkboxTeganganperalatan" required>
+                                                                        <input type="checkbox" value="48 VDC" id="checkbox48" name="checkboxTeganganperalatan[]">
                                                                         <label for="checkbox48">
-                                                                        48 VDC
+                                                                            48 VDC
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -501,23 +465,23 @@
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label>Kategori Peralatan yang Terpasang</label>
-                                                            <!-- radio -->
+                                                            <!-- multiple -->
                                                             <div class="form-group clearfix row">
                                                                 <div class="col">
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="PENGHANTAR" id="checkboxPenghantar" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="PENGHANTAR" id="checkboxPenghantar" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxPenghantar">
                                                                     Penghantar
                                                                     </label>
                                                                 </div>
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="TRAFO" id="checkboxTrafo" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="TRAFO" id="checkboxTrafo" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxTrafo">
                                                                     Trafo
                                                                     </label>
                                                                 </div>
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="KOPEL" id="checkboxKopel" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="KOPEL" id="checkboxKopel" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxKopel">
                                                                     Kopel
                                                                     </label>
@@ -525,19 +489,19 @@
                                                                 </div>
                                                                 <div class="col">
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="KAPASITOR" id="checkboxKapasitor" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="KAPASITOR" id="checkboxKapasitor" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxKapasitor">
                                                                     Kapasitor
                                                                     </label>
                                                                 </div>
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="DIAMETER" id="checkboxDiameter" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="DIAMETER" id="checkboxDiameter" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxDiameter">
                                                                     Diameter
                                                                     </label>
                                                                 </div>
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="BUSBAR" id="checkboxBusbar" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="BUSBAR" id="checkboxBusbar" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxBusbar">
                                                                     Busbar dan Synchro
                                                                     </label>
@@ -545,13 +509,13 @@
                                                                 </div>
                                                                 <div class="col">
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="ACDC" id="checkboxAcdc" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="ACDC" id="checkboxAcdc" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxAcdc">
                                                                     AC/DC
                                                                     </label>
                                                                 </div>
                                                                 <div class="icheck-primary">
-                                                                    <input type="checkbox" value="ALAT PEREKAM" id="checkboxAlatperekam2" name="checkboxKategorilanjutan" required>
+                                                                    <input type="checkbox" value="ALAT PEREKAM" id="checkboxAlatperekam2" name="checkboxKategorilanjutan[]">
                                                                     <label for="checkboxAlatperekam2">
                                                                     Alat Perekam
                                                                     </label>
@@ -602,58 +566,59 @@
                                                     <!-- radio -->
                                                     <div class="form-group clearfix row">
                                                         <div class="col">
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="PENGHANTAR" id="radioPenghantarbay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioPenghantarbay">
-                                                            Penghantar
-                                                            </label>
-                                                        </div>
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="TRAFO" id="radioTrafobay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioTrafobay">
-                                                            Trafo
-                                                            </label>
-                                                        </div>
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="KOPEL" id="radioKopelbay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioKopelbay">
-                                                            Kopel
-                                                            </label>
-                                                        </div>
-                                                        </div>
-                                                        <div class="col">
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="KAPASITOR" id="radioKapasitorbay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioKapasitorbay">
-                                                            Kapasitor
-                                                            </label>
-                                                        </div>
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="DIAMETER" id="radioDiameterbay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioDiameterbay">
-                                                            Diameter
-                                                            </label>
-                                                        </div>
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="BUSBAR" id="radioBusbarbay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioBusbarbay">
-                                                            Busbar dan Synchro
-                                                            </label>
-                                                        </div>
-                                                        </div>
-                                                        <div class="col">
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="ACDC" id="radioAcdcbay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioAcdcbay">
-                                                            AC/DC
-                                                            </label>
-                                                        </div>
-                                                        <div class="icheck-primary">
-                                                            <input type="radio" value="ALAT PEREKAM" id="radioAlatperekam2bay" name="radioKategorilanjutanbay" required>
-                                                            <label for="radioAlatperekam2bay">
-                                                            Alat Perekam
-                                                            </label>
-                                                        </div>
+                                                            <input type="hidden" class="form-control" value="" name="jumlah_wiring" id="jumlah_wiring" readonly>
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="PENGHANTAR" id="radioPenghantarbay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioPenghantarbay">
+                                                                Penghantar
+                                                                </label>
+                                                            </div>
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="TRAFO" id="radioTrafobay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioTrafobay">
+                                                                Trafo
+                                                                </label>
+                                                            </div>
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="KOPEL" id="radioKopelbay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioKopelbay">
+                                                                Kopel
+                                                                </label>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col">
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="KAPASITOR" id="radioKapasitorbay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioKapasitorbay">
+                                                                Kapasitor
+                                                                </label>
+                                                            </div>
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="DIAMETER" id="radioDiameterbay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioDiameterbay">
+                                                                Diameter
+                                                                </label>
+                                                            </div>
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="BUSBAR" id="radioBusbarbay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioBusbarbay">
+                                                                Busbar dan Synchro
+                                                                </label>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col">
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="ACDC" id="radioAcdcbay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioAcdcbay">
+                                                                AC/DC
+                                                                </label>
+                                                            </div>
+                                                            <div class="icheck-primary">
+                                                                <input type="radio" value="ALAT PEREKAM" id="radioAlatperekam2bay" name="radioKategorilanjutanbay" required>
+                                                                <label for="radioAlatperekam2bay">
+                                                                Alat Perekam
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -669,7 +634,8 @@
                                             <div class="row">
                                             <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <label>Nama Gardu</label>
+                                                    <label>Pilih Gardu</label>
+                                                    <input type="hidden" class="form-control" value="" name="id_gardu" id="id_gardu" readonly>
                                                     <div class="select2-purple">
                                                         <select class="form-control select2bs4" style="width: 100%;" name="nama_gardu" required>
                                                         <option value="" disabled selected>Pilih salah satu</option>
@@ -687,16 +653,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                     <label>Kode Gardu</label>
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="kode_gardu" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_gardu as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->kode_gardu ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>
+                                                    <input class="form-control" value="" name="kode_gardu" id="kode_gardu" readonly>
                                                     </div>
                                                     <!-- /.form-group -->
                                                 </div>
@@ -706,18 +663,10 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">                                                    
-                                                    <label>Pilih ULTG</label>
-                                                    <input type="hidden" value="<?php echo $data_tragi_simple->id_tragi ?>" name="id_tragi">
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_tragi" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_tragi as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->nama_tragi ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>                                                
+                                                    <label>ULTG</label>
+                                                    <input type="hidden" class="form-control" value="" name="id_tragi" id="id_tragi2" readonly>
+                                                    <input type="hidden" class="form-control" value="" name="kode_tragi" id="kode_tragi2" readonly>
+                                                    <input class="form-control" value="" name="nama_tragi" id="nama_tragi2" readonly>                                                
                                                     </div>
                                                     <!-- /.form-group -->
                                                 </div>
@@ -725,17 +674,9 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">                                                    
                                                     <label>Pilih UPT</label>
-                                                    <input type="hidden" value="<?php echo $data_upt_simple->id_upt ?>" name="id_upt">
-                                                    <div class="select2-purple">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" required>
-                                                        <option value="" disabled selected>Pilih salah satu</option>
-                                                        <?php                            
-                                                            foreach($data_upt as $hasil){
-                                                        ?>
-                                                        <option><?php echo $hasil->nama_upt ?></option>
-                                                        <?php } ?> 
-                                                        </select>
-                                                    </div>                                                
+                                                    <input type="hidden" class="form-control" value="" name="id_upt" id="id_upt3" readonly>
+                                                    <input type="hidden" class="form-control" value="" name="kode_upt" id="kode_upt3" readonly>
+                                                    <input class="form-control" value="" name="nama_upt" id="nama_upt3" readonly>                                                
                                                     </div>
                                                     <!-- /.form-group -->
                                                 </div>
@@ -796,65 +737,336 @@
 
   <script src="<?php echo base_url(); ?>assets/back/AdminLTE/dist/js/pages/dashboard3.js"></script>
 
-  <script>
+
+<script>
     $(document).ready(function() {
-      
-      //Initialize Select2 Elements
-      $('.select2').select2()
+        
+        //Initialize Select2 Elements
+        $('.select2').select2()
 
-      //Initialize Select2 Elements
-      $('.select2bs4').select2({
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
         theme: 'bootstrap4'
-      })
+        })
 
-      bsCustomFileInput.init();
+        bsCustomFileInput.init();
 
-      <?php if($this->session->flashdata('success')): ?>
+        <?php if($this->session->flashdata('success')): ?>
         Swal.fire({
             title: 'Sukses!',
             text: '<?php echo $this->session->flashdata('success'); ?>',
             icon: 'success',
             confirmButtonText: 'Konfirmasi'
         });
-      <?php endif; ?>
+        <?php endif; ?>
 
-      <?php if($this->session->flashdata('gagalSimpan')): ?>
+        <?php if($this->session->flashdata('gagalSimpan')): ?>
         Swal.fire({
             title: 'Gagal!',
             text: '<?php echo $this->session->flashdata('gagalSimpan'); ?>',
             icon: 'error',
             confirmButtonText: 'Konfirmasi'
         });
-      <?php endif; ?>
+        <?php endif; ?>
 
-      <?php if($this->session->flashdata('gagalUpload')): ?>
+        <?php if($this->session->flashdata('gagalUpload')): ?>
         Swal.fire({
             title: 'Gagal!',
             text: '<?php echo $this->session->flashdata('gagalUpload'); ?>',
             icon: 'error',
             confirmButtonText: 'Konfirmasi'
         });
-      <?php endif; ?>
+        <?php endif; ?>
 
-    $('select[name="nama_upt"]').on('change', function() {
-    var nama_upt = $(this).val();
-    if(nama_upt) {
-        $.ajax({
-            url: '<?php echo base_url('adminhome/get_id_upt_by_name'); ?>',
-            type: "POST",
-            dataType: "json",
-            data: {'nama_upt':nama_upt},
-            success: function(data) {
-                $('#id_upt').val(data.id_upt);
+        $('select[name="nama_upt"]').on('change', function() {
+            var nama_upt = $(this).val();
+            if(nama_upt) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_id_upt_by_name'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_upt':nama_upt},
+                    success: function(data) {
+                        $('#id_upt').val(data.id_upt);
+                    }
+                });
+            } else {
+                $('#id_upt').val('');
             }
         });
-    } else {
-        $('#id_upt').val('');
-    }
+
+        $('select[name="nama_upt"]').on('change', function() {
+            var nama_upt = $(this).val();
+            if(nama_upt) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_kode_upt_by_name'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_upt':nama_upt},
+                    success: function(data) {
+                        $('#kode_upt').val(data.kode_upt);
+                    }
+                });
+            } else {
+                $('#kode_upt').val('');
+            }
+        });
+
+        $('select[name="nama_tragi"]').on('change', function() {
+            var nama_tragi = $(this).val();
+            if(nama_tragi) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_tragi_by_name_idtragi'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_tragi':nama_tragi},
+                    success: function(data) {
+                        $('#id_tragi').val(data.id_tragi);
+                    }
+                });
+            } else {
+                $('#id_tragi').val('');
+            }
+        });
+
+        $('select[name="nama_tragi"]').on('change', function() {
+            var nama_tragi = $(this).val();
+            if(nama_tragi) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_tragi_by_name_kodetragi'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_tragi':nama_tragi},
+                    success: function(data) {
+                        $('#kode_tragi').val(data.kode_tragi);
+                    }
+                });
+            } else {
+                $('#kode_tragi').val('');
+            }
+        });
+
+        $('select[name="nama_tragi"]').on('change', function() {
+            var nama_tragi = $(this).val();
+            if(nama_tragi) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_tragi_by_name_idupt'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_tragi':nama_tragi},
+                    success: function(data) {
+                        $('#id_upt2').val(data.id_upt);
+                    }
+                });
+            } else {
+                $('#id_upt2').val('');
+            }
+        });
+
+        $('select[name="nama_tragi"]').on('change', function() {
+            var nama_tragi = $(this).val();
+            if(nama_tragi) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_tragi_by_name_namaupt'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_tragi':nama_tragi},
+                    success: function(data) {
+                        $('#nama_upt2').val(data.nama_upt);
+                    }
+                });
+            } else {
+                $('#nama_upt2').val('');
+            }
+        });
+
+        $('select[name="nama_tragi"]').on('change', function() {
+            var nama_tragi = $(this).val();
+            if(nama_tragi) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_tragi_by_name_kodeupt'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_tragi':nama_tragi},
+                    success: function(data) {
+                        $('#kode_upt2').val(data.kode_upt);
+                    }
+                });
+            } else {
+                $('#kode_upt2').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_idgardu'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#id_gardu').val(data.id_gardu);
+                    }
+                });
+            } else {
+                $('#id_gardu').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_kodegardu'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#kode_gardu').val(data.kode_gardu);
+                    }
+                });
+            } else {
+                $('#kode_gardu').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_idtragi'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#id_tragi2').val(data.id_tragi);
+                    }
+                });
+            } else {
+                $('#id_tragi2').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_namatragi'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#nama_tragi2').val(data.nama_tragi);
+                    }
+                });
+            } else {
+                $('#nama_tragi2').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_kodetragi'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#kode_tragi2').val(data.kode_tragi);
+                    }
+                });
+            } else {
+                $('#kode_tragi2').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_idupt'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#id_upt3').val(data.id_upt);
+                    }
+                });
+            } else {
+                $('#id_upt3').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_namaupt'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#nama_upt3').val(data.nama_upt);
+                    }
+                });
+            } else {
+                $('#nama_upt3').val('');
+            }
+        });
+
+        $('select[name="nama_gardu"]').on('change', function() {
+            var nama_gardu = $(this).val();
+            if(nama_gardu) {
+                $.ajax({
+                    url: '<?php echo base_url('adminhome/get_data_gardu_by_name_kodeupt'); ?>',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'nama_gardu':nama_gardu},
+                    success: function(data) {
+                        $('#kode_upt3').val(data.kode_upt);
+                    }
+                });
+            } else {
+                $('#kode_upt3').val('');
+            }
+        });
+
+        $('input[name="radioKategorilanjutanbay"]').on('change', function() {
+        var jumlah_wiring = 0;
+        if ($('#radioPenghantarbay').is(':checked')) {
+            jumlah_wiring += 5;
+        }
+        if ($('#radioTrafobay').is(':checked')) {
+            jumlah_wiring += 6;
+        }
+        if ($('#radioKopelbay').is(':checked')) {
+            jumlah_wiring += 4;
+        }
+        if ($('#radioKapasitorbay').is(':checked')) {
+            jumlah_wiring += 5;
+        }
+        if ($('#radioDiameterbay').is(':checked')) {
+            jumlah_wiring += 5;
+        }
+        if ($('#radioBusbarbay').is(':checked')) {
+            jumlah_wiring += 1;
+        }
+        if ($('#radioAcdcbay').is(':checked')) {
+            jumlah_wiring += 1;
+        }
+        if ($('#radioAlatperekam2bay').is(':checked')) {
+            jumlah_wiring += 1;
+        }
+        // Tambahkan kondisi untuk radio button lainnya
+        
+        $('#jumlah_wiring').val(jumlah_wiring);
     });
-      
+        
     });
-  </script>
+</script>
+
 
 
 
