@@ -32,8 +32,8 @@
     color: #fff;
   }
 
-  .badge-maroon{
-    background-color: #B91646;
+  .badge-green{
+    background-color: #105652;
     color: #fff;
   }
   
@@ -129,7 +129,7 @@
                   <tr data-widget="expandable-table">
                       <td><?php echo $no++ ?></td>
                       <td>
-                        <span class="badge badge-maroon"><?php echo $hasil->nama_gardu ?> </span>
+                        <span class="badge badge-green"><?php echo $hasil->nama_gardu ?> </span>
                         <span class="badge badge-secondary"><?php echo $hasil->kategori_bay ?></span>
                         <span class="badge badge-secondary"><?php echo $hasil->level_tegangan ?></span>
                         <span class="badge badge-darkblue"><?php echo $hasil->merk_peralatan ?></span>
