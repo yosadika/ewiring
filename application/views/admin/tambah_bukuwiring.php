@@ -158,6 +158,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Pilih UPT</label>
+                      <input type="hidden" class="form-control" value="" name="id_upt" id="id_upt" readonly>
                       <div class="select2-purple">
                       <select class="form-control select2bs4" style="width: 100%;" name="nama_upt" id="nama_upt" required>
                         <option value="" disabled selected>Pilih salah satu</option>
@@ -175,6 +176,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Pilih ULTG</label>
+                      <input type="hidden" class="form-control" value="" name="id_tragi" id="id_tragi" readonly>
                       <div class="select2-purple">
                         <select class="form-control select2bs4" style="width: 100%;" name="nama_tragi" id="nama_tragi" required>
                           <option value="" disabled selected>Pilih salah satu</option>
@@ -186,6 +188,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Pilih Gardu</label>
+                      <input type="hidden" class="form-control" value="" name="id_gardu" id="id_gardu" readonly>
                       <div class="select2-purple">
                         <select class="form-control select2bs4" style="width: 100%;" name="nama_gardu" id="nama_gardu" required>
                           <option value="" disabled selected>Pilih salah satu</option>
@@ -675,39 +678,90 @@
         });
       });
 
-      $('select[name="nama_bay"]').on('change', function() {
-            var nama_bay = $(this).val();
-            if(nama_bay) {
-                $.ajax({
-                    url: '<?php echo base_url('adminhome/get_data_bay_by_name_idbay'); ?>',
-                    type: "POST",
-                    dataType: "json",
-                    data: {'nama_bay':nama_bay},
-                    success: function(data) {
-                        $('#id_bay').val(data.id_bay);
-                    }
-                });
-            } else {
-                $('#id_bay').val('');
-            }
-        });
+      $('select[name="nama_upt"]').on('change', function() {
+          var nama_upt = $(this).val();
+          if(nama_upt) {
+              $.ajax({
+                  url: '<?php echo base_url('adminhome/get_data_upt_by_name_newpdf_idupt'); ?>',
+                  type: "POST",
+                  dataType: "json",
+                  data: {'nama_upt':nama_upt},
+                  success: function(data) {
+                      $('#id_upt').val(data.id_upt);
+                  }
+              });
+          } else {
+              $('#id_upt').val('');
+          }
+      });
 
-        $('select[name="nama_bay"]').on('change', function() {
-            var nama_bay = $(this).val();
-            if(nama_bay) {
-                $.ajax({
-                    url: '<?php echo base_url('adminhome/get_data_bay_by_name_jumlahwiring'); ?>',
-                    type: "POST",
-                    dataType: "json",
-                    data: {'nama_bay':nama_bay},
-                    success: function(data) {
-                        $('#jumlah_wiring').val(data.bay_pdf_requirement);
-                    }
-                });
-            } else {
-                $('#jumlah_wiring').val('');
-            }
-        });
+      $('select[name="nama_tragi"]').on('change', function() {
+          var nama_tragi = $(this).val();
+          if(nama_tragi) {
+              $.ajax({
+                  url: '<?php echo base_url('adminhome/get_data_tragi_by_name_newpdf_idtragi'); ?>',
+                  type: "POST",
+                  dataType: "json",
+                  data: {'nama_tragi':nama_tragi},
+                  success: function(data) {
+                      $('#id_tragi').val(data.id_tragi);
+                  }
+              });
+          } else {
+              $('#id_tragi').val('');
+          }
+      });
+
+      $('select[name="nama_gardu"]').on('change', function() {
+          var nama_gardu = $(this).val();
+          if(nama_gardu) {
+              $.ajax({
+                  url: '<?php echo base_url('adminhome/get_data_gardu_by_name_newpdf_idgardu'); ?>',
+                  type: "POST",
+                  dataType: "json",
+                  data: {'nama_gardu':nama_gardu},
+                  success: function(data) {
+                      $('#id_gardu').val(data.id_gardu);
+                  }
+              });
+          } else {
+              $('#id_gardu').val('');
+          }
+      });
+
+      $('select[name="nama_bay"]').on('change', function() {
+          var nama_bay = $(this).val();
+          if(nama_bay) {
+              $.ajax({
+                  url: '<?php echo base_url('adminhome/get_data_bay_by_name_idbay'); ?>',
+                  type: "POST",
+                  dataType: "json",
+                  data: {'nama_bay':nama_bay},
+                  success: function(data) {
+                      $('#id_bay').val(data.id_bay);
+                  }
+              });
+          } else {
+              $('#id_bay').val('');
+          }
+      });
+
+      $('select[name="nama_bay"]').on('change', function() {
+          var nama_bay = $(this).val();
+          if(nama_bay) {
+              $.ajax({
+                  url: '<?php echo base_url('adminhome/get_data_bay_by_name_jumlahwiring'); ?>',
+                  type: "POST",
+                  dataType: "json",
+                  data: {'nama_bay':nama_bay},
+                  success: function(data) {
+                      $('#jumlah_wiring').val(data.bay_pdf_requirement);
+                  }
+              });
+          } else {
+              $('#jumlah_wiring').val('');
+          }
+      });
 
       
     });

@@ -78,7 +78,7 @@
   visibility:hidden;
 }
 
-a[target="_blank"]::before {
+.svg-wa[target="_blank"]::before {
   content: "";
   width: 1.2em;
   height: 1.2em;
@@ -169,7 +169,7 @@ a[target="_blank"]::before {
                       ?>
                       <h5 class="card-title text-primary text-white"><?php echo $hasil->nama_gardu ?> <?php echo $hasil->level_tegangan ?></h5>
                       <p class="card-text text-white pb-2 pt-1">ULTG <?php echo $hasil->nama_tragi ?></p>
-                      <a href="http://wa.me/6261123" target="_blank" class="text-white">061123</a>
+                      <a href="http://wa.me/6261123" target="_blank" class="svg-wa text-white">061123</a>
                       <?php } ?>
                     </div>
                 </div>

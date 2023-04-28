@@ -133,6 +133,7 @@ class Data_induk extends CI_model{
 	{
 		$this->db->where('id_upt', $id_upt);
 		$this->db->from('pdf');
+		$this->db->where('status', '1');
 		return $this->db->count_all_results();
 	}
 
@@ -214,10 +215,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function get_all_buku($nama_gardu)
+	public function get_all_buku($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
                  ->from('pdf')
 				 ->where("status", '1' )             
 				 ->order_by('id_pdf', 'ASC')
@@ -249,111 +250,111 @@ class Data_induk extends CI_model{
     return $this->db->count_all_results();
 	}
 
-	public function count_sistem_dc($nama_gardu)
+	public function count_sistem_dc($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_peralatan', 'sistem dc');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_bay_gardu($nama_gardu)
+	public function count_bay_gardu($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_peralatan', 'bay');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_alat_perekam($nama_gardu)
+	public function count_alat_perekam($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_peralatan', 'alat perekam');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function cek_diameter($nama_gardu)
+	public function cek_diameter($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where("FIND_IN_SET('diameter', kategori_peralatan_yang_ada) !=", 0);
 		$this->db->from('gardu');
 		return $this->db->count_all_results();
 	}
 
-	public function cek_penghantar($nama_gardu)
+	public function cek_penghantar($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where("FIND_IN_SET('penghantar', kategori_peralatan_yang_ada) !=", 0);
 		$this->db->from('gardu');
 		return $this->db->count_all_results();
 	}
 
-	public function cek_trafo($nama_gardu)
+	public function cek_trafo($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where("FIND_IN_SET('trafo', kategori_peralatan_yang_ada) !=", 0);
 		$this->db->from('gardu');
 		return $this->db->count_all_results();
 	}
 
-	public function cek_kopel($nama_gardu)
+	public function cek_kopel($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where("FIND_IN_SET('kopel', kategori_peralatan_yang_ada) !=", 0);
 		$this->db->from('gardu');
 		return $this->db->count_all_results();
 	}
 
-	public function cek_kapasitor($nama_gardu)
+	public function cek_kapasitor($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where("FIND_IN_SET('kapasitor', kategori_peralatan_yang_ada) !=", 0);
 		$this->db->from('gardu');
 		return $this->db->count_all_results();
 	}
 
-	public function cek_busbar($nama_gardu)
+	public function cek_busbar($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where("FIND_IN_SET('busbar', kategori_peralatan_yang_ada) !=", 0);
 		$this->db->from('gardu');
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_diameter($nama_gardu)
+	public function count_wiring_diameter($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'diameter');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_penghantar($nama_gardu)
+	public function count_wiring_penghantar($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'penghantar');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_trafo($nama_gardu)
+	public function count_wiring_trafo($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'trafo');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_trafohv($nama_gardu)
+	public function count_wiring_trafohv($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'trafo');
 		$this->db->where('level_tegangan', '150 KV');
 		$this->db->where("status", '1' );
@@ -361,9 +362,9 @@ class Data_induk extends CI_model{
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_trafolv($nama_gardu)
+	public function count_wiring_trafolv($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'trafo');
 		$this->db->where('level_tegangan', '20 KV');
 		$this->db->where("status", '1' );
@@ -371,37 +372,37 @@ class Data_induk extends CI_model{
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_kopel($nama_gardu)
+	public function count_wiring_kopel($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'kopel');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_kapasitor($nama_gardu)
+	public function count_wiring_kapasitor($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'kapasitor');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function count_wiring_busbar($nama_gardu)
+	public function count_wiring_busbar($id_gardu)
 	{
-		$this->db->where('nama_gardu', $nama_gardu);
+		$this->db->where('id_gardu', $id_gardu);
 		$this->db->where('kategori_bay', 'busbar');
 		$this->db->where("status", '1' );
 		$this->db->from('pdf');
 		return $this->db->count_all_results();
 	}
 
-	public function data_buku_acdc($nama_gardu)
+	public function data_buku_acdc($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'acdc')
                  ->from('pdf')
 				 ->where("status", '1' )             
@@ -410,10 +411,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_alatperekam($nama_gardu)
+	public function data_buku_alatperekam($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'alat perekam')
                  ->from('pdf')
 				 ->where("status", '1' )             
@@ -422,10 +423,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_diameter($nama_gardu)
+	public function data_buku_diameter($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'diameter')
                  ->from('pdf')
 				 ->where("status", '1' )             
@@ -434,10 +435,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_penghantar($nama_gardu)
+	public function data_buku_penghantar($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'penghantar')
                  ->from('pdf')
 				 ->where("status", '1' )             
@@ -446,10 +447,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_trafo_hv($nama_gardu)
+	public function data_buku_trafo_hv($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'trafo')
 				 ->where_in('level_tegangan', array('150 KV', '275 KV'))
                  ->from('pdf')
@@ -459,10 +460,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_trafo_lv($nama_gardu)
+	public function data_buku_trafo_lv($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'trafo')
 				 ->where('level_tegangan', '20 KV')
                  ->from('pdf')
@@ -472,10 +473,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_kopel($nama_gardu)
+	public function data_buku_kopel($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'kopel')
                  ->from('pdf')
 				 ->where("status", '1' )             
@@ -484,10 +485,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_kapasitor($nama_gardu)
+	public function data_buku_kapasitor($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'kapasitor')
                  ->from('pdf')
 				 ->where("status", '1' )             
@@ -496,10 +497,10 @@ class Data_induk extends CI_model{
 		return $query->result();
     }
 
-	public function data_buku_busbar($nama_gardu)
+	public function data_buku_busbar($id_gardu)
     {
         $query = $this->db->select("*")             
-                 ->where('nama_gardu', $nama_gardu)
+                 ->where('id_gardu', $id_gardu)
 				 ->where('kategori_bay', 'busbar')
                  ->from('pdf')
 				 ->where("status", '1' )             

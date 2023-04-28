@@ -276,7 +276,7 @@ $(document).ready(function() {
     tableContent += '<tr><td>Upload by</td><td>' + data[6] + '</td></tr>';
     tableContent += '<tr><td>Upload date</td><td>' + data[5] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="' + data[8] + '" target="_blank" class="btn btn-info">Lihat PDF</a>';
+    tableContent += '<a href="<?php echo base_url(); ?>'  + data[8] + '" target="_blank" class="btn btn-info">Lihat PDF</a>';
     $('#myModal .modal-body').html(tableContent);
     $('#myModal .modal-title').html(data[10]);
     // tambahkan kode modal footer di sini

@@ -521,7 +521,7 @@
               <div class="card-body">
                 <div class="row margin-bottom">
                   <div class="margin-side">
-                  <a href="<?php echo $data_wiring->link_pdf ?>" target="_blank" class="btn btn-info">Lihat PDF</a>
+                  <a href="<?php echo base_url() ?><?php echo $data_wiring->link_pdf ?>" target="_blank" class="btn btn-info">Lihat PDF</a>
                   </div>
                   <div class="col text-center">
                     <?php echo str_replace(' ', '_', $data_wiring->nama_bay . '_' . $data_wiring->sub_kategori_wiring . '_' . date('dmY', strtotime($data_wiring->update_terakhir))) . '.pdf' ; ?>

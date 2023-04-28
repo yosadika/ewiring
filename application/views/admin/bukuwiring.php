@@ -21,6 +21,21 @@
   .margin-left{
     margin-left: 5px;
   }
+
+  .badge-graydark{
+    background-color: #343a40;
+    color: #fff;
+  }
+
+  .badge-darkblue{
+    background-color: #006E7F;
+    color: #fff;
+  }
+
+  .badge-maroon{
+    background-color: #B91646;
+    color: #fff;
+  }
   
 </style>
 
@@ -93,10 +108,7 @@
                   <thead>
                   <tr>
                       <th>No.</th>
-                      <th>UPT</th>
-                      <th>ULTG</th>
-                      <th>Gardu</th>
-                      <th>Bay</th>
+                      <th>Data Wiring</th>
                       <th data-class='table-hidden'>Data Hidden 1</th>
                       <th data-class='table-hidden'>Data Hidden 2</th>
                       <th data-class='table-hidden'>Data Hidden 3</th>
@@ -116,10 +128,13 @@
                   
                   <tr data-widget="expandable-table">
                       <td><?php echo $no++ ?></td>
-                      <td><?php echo $hasil->nama_upt ?></td>
-                      <td><?php echo $hasil->nama_tragi ?></td>
-                      <td><?php echo $hasil->nama_gardu ?></td>
-                      <td><?php echo $hasil->nama_bay ?></td>
+                      <td>
+                        <span class="badge badge-maroon"><?php echo $hasil->nama_gardu ?> </span>
+                        <span class="badge badge-secondary"><?php echo $hasil->kategori_bay ?></span>
+                        <span class="badge badge-secondary"><?php echo $hasil->level_tegangan ?></span>
+                        <span class="badge badge-darkblue"><?php echo $hasil->merk_peralatan ?></span>
+                        <span class="badge badge-graydark"><?php echo $hasil->kode_drawing ?></span>
+                      </td>
                       
                       <td><?php echo $hasil->update_terakhir ?></td>
                       <td><?php echo $hasil->user_upload ?></td>
@@ -243,7 +258,7 @@
 $(document).ready(function() {
 
   $("#example").DataTable({
-      "responsive": false, "lengthChange": true, "autoWidth": false
+      "responsive": true, "lengthChange": false, "autoWidth": false
   });
 
   var table = $('#example').DataTable();
@@ -251,17 +266,17 @@ $(document).ready(function() {
   $('#example tbody').on('click', 'tr', function () {
     var data = table.row( this ).data();
     var tableContent = '<table class="table table-bordered">';
-    tableContent += '<tr><td>Upload by</td><td>' + data[6] + '</td></tr>';
-    tableContent += '<tr><td>Updated by</td><td>' + data[7] + '</td></tr>';
-    tableContent += '<tr><td>Last update</td><td>' + data[5] + '</td></tr>';
+    tableContent += '<tr><td>Upload by</td><td>' + data[3] + '</td></tr>';
+    tableContent += '<tr><td>Updated by</td><td>' + data[4] + '</td></tr>';
+    tableContent += '<tr><td>Last update</td><td>' + data[2] + '</td></tr>';
     tableContent += '</table>';
-    tableContent += '<a href="<?php echo base_url() ?>' + data[8] + '" target="_blank" class="btn btn-info">Download PDF</a>';
+    tableContent += '<a href="<?php echo base_url() ?>' + data[5] + '" target="_blank" class="btn btn-info">Download PDF</a>';
     $('#myModal .modal-body').html(tableContent);
-    $('#myModal .modal-title').html(data[10]);
+    $('#myModal .modal-title').html(data[7]);
     // tambahkan kode modal footer di sini
     var modalFooter = '<div>';
-    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[9] + '" type="button" class="btn btn-info">Edit</a>';
-    modalFooter += '<a href="#!" onclick="deleteConfirm(\'<?php echo base_url(); ?>adminhome/hapus_wiring/' + data[9] + '\')" type="button" class="btn btn-danger margin-left">Hapus</a>';
+    modalFooter += '<a href="<?php echo base_url() ?>adminhome/edit_wiring/' + data[6] + '" type="button" class="btn btn-info">Edit</a>';
+    modalFooter += '<a href="#!" onclick="deleteConfirm(\'<?php echo base_url(); ?>adminhome/hapus_wiring/' + data[6] + '\')" type="button" class="btn btn-danger margin-left">Hapus</a>';
     modalFooter += '</div>';
     $('#myModal .modal-footer').html(modalFooter);
     $('#myModal').modal('show');

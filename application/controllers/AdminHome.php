@@ -59,34 +59,34 @@ class AdminHome extends MY_Controller {
 
 		$nama_gardu = $data['data_gardu'][0]->nama_gardu;
 
-		$data['data_buku_all']				= $this->data_induk->get_all_buku($nama_gardu);
-		$data['count_sistem_dc'] 			= $this->data_induk->count_sistem_dc($nama_gardu);
-		$data['count_bay_gardu'] 			= $this->data_induk->count_bay_gardu($nama_gardu);
-		$data['count_alat_perekam'] 		= $this->data_induk->count_alat_perekam($nama_gardu);
-		$data['cek_diameter'] 				= $this->data_induk->cek_diameter($nama_gardu);
-		$data['cek_penghantar'] 			= $this->data_induk->cek_penghantar($nama_gardu);
-		$data['cek_trafo'] 					= $this->data_induk->cek_trafo($nama_gardu);
-		$data['cek_kopel'] 					= $this->data_induk->cek_kopel($nama_gardu);
-		$data['cek_kapasitor'] 				= $this->data_induk->cek_kapasitor($nama_gardu);
-		$data['cek_busbar'] 				= $this->data_induk->cek_busbar($nama_gardu);
-		$data['count_wiring_diameter'] 		= $this->data_induk->count_wiring_diameter($nama_gardu);
-		$data['count_wiring_penghantar'] 	= $this->data_induk->count_wiring_penghantar($nama_gardu);
-		$data['count_wiring_trafo'] 		= $this->data_induk->count_wiring_trafo($nama_gardu);
-		$data['count_wiring_kopel'] 		= $this->data_induk->count_wiring_kopel($nama_gardu);
-		$data['count_wiring_kapasitor'] 	= $this->data_induk->count_wiring_kapasitor($nama_gardu);
-		$data['count_wiring_busbar'] 		= $this->data_induk->count_wiring_busbar($nama_gardu);
-		$data['count_wiring_trafohv'] 		= $this->data_induk->count_wiring_trafohv($nama_gardu);
-		$data['count_wiring_trafolv'] 		= $this->data_induk->count_wiring_trafolv($nama_gardu);
+		$data['data_buku_all']				= $this->data_induk->get_all_buku($id_gardu);
+		$data['count_sistem_dc'] 			= $this->data_induk->count_sistem_dc($id_gardu);
+		$data['count_bay_gardu'] 			= $this->data_induk->count_bay_gardu($id_gardu);
+		$data['count_alat_perekam'] 		= $this->data_induk->count_alat_perekam($id_gardu);
+		$data['cek_diameter'] 				= $this->data_induk->cek_diameter($id_gardu);
+		$data['cek_penghantar'] 			= $this->data_induk->cek_penghantar($id_gardu);
+		$data['cek_trafo'] 					= $this->data_induk->cek_trafo($id_gardu);
+		$data['cek_kopel'] 					= $this->data_induk->cek_kopel($id_gardu);
+		$data['cek_kapasitor'] 				= $this->data_induk->cek_kapasitor($id_gardu);
+		$data['cek_busbar'] 				= $this->data_induk->cek_busbar($id_gardu);
+		$data['count_wiring_diameter'] 		= $this->data_induk->count_wiring_diameter($id_gardu);
+		$data['count_wiring_penghantar'] 	= $this->data_induk->count_wiring_penghantar($id_gardu);
+		$data['count_wiring_trafo'] 		= $this->data_induk->count_wiring_trafo($id_gardu);
+		$data['count_wiring_kopel'] 		= $this->data_induk->count_wiring_kopel($id_gardu);
+		$data['count_wiring_kapasitor'] 	= $this->data_induk->count_wiring_kapasitor($id_gardu);
+		$data['count_wiring_busbar'] 		= $this->data_induk->count_wiring_busbar($id_gardu);
+		$data['count_wiring_trafohv'] 		= $this->data_induk->count_wiring_trafohv($id_gardu);
+		$data['count_wiring_trafolv'] 		= $this->data_induk->count_wiring_trafolv($id_gardu);
 
-		$data['data_buku_diameter']			= $this->data_induk->data_buku_diameter($nama_gardu);
-		$data['data_buku_penghantar']		= $this->data_induk->data_buku_penghantar($nama_gardu);
-		$data['data_buku_trafo_hv']			= $this->data_induk->data_buku_trafo_hv($nama_gardu);
-		$data['data_buku_trafo_lv']			= $this->data_induk->data_buku_trafo_lv($nama_gardu);
-		$data['data_buku_kopel']			= $this->data_induk->data_buku_kopel($nama_gardu);
-		$data['data_buku_kapasitor']		= $this->data_induk->data_buku_kapasitor($nama_gardu);
-		$data['data_buku_busbar']			= $this->data_induk->data_buku_busbar($nama_gardu);
-		$data['data_buku_acdc']				= $this->data_induk->data_buku_acdc($nama_gardu);
-		$data['data_buku_alatperekam']		= $this->data_induk->data_buku_alatperekam($nama_gardu);
+		$data['data_buku_diameter']			= $this->data_induk->data_buku_diameter($id_gardu);
+		$data['data_buku_penghantar']		= $this->data_induk->data_buku_penghantar($id_gardu);
+		$data['data_buku_trafo_hv']			= $this->data_induk->data_buku_trafo_hv($id_gardu);
+		$data['data_buku_trafo_lv']			= $this->data_induk->data_buku_trafo_lv($id_gardu);
+		$data['data_buku_kopel']			= $this->data_induk->data_buku_kopel($id_gardu);
+		$data['data_buku_kapasitor']		= $this->data_induk->data_buku_kapasitor($id_gardu);
+		$data['data_buku_busbar']			= $this->data_induk->data_buku_busbar($id_gardu);
+		$data['data_buku_acdc']				= $this->data_induk->data_buku_acdc($id_gardu);
+		$data['data_buku_alatperekam']		= $this->data_induk->data_buku_alatperekam($id_gardu);
 
 
 
@@ -582,6 +582,30 @@ class AdminHome extends MY_Controller {
         exit();
 	}
 
+	public function get_data_upt_by_name_newpdf_idupt() {
+		$nama_upt = $this->input->post('nama_upt');
+        $this->load->model('Data_bukuwiring');
+        $id_upt = $this->Data_bukuwiring->get_data_upt_by_name_newpdf_idupt($nama_upt);
+        echo json_encode(array("id_upt" => $id_upt));
+        exit();
+	}
+
+	public function get_data_tragi_by_name_newpdf_idtragi() {
+		$nama_tragi = $this->input->post('nama_tragi');
+        $this->load->model('Data_bukuwiring');
+        $id_tragi = $this->Data_bukuwiring->get_data_tragi_by_name_newpdf_idtragi($nama_tragi);
+        echo json_encode(array("id_tragi" => $id_tragi));
+        exit();
+	}
+
+	public function get_data_gardu_by_name_newpdf_idgardu() {
+		$nama_gardu = $this->input->post('nama_gardu');
+        $this->load->model('Data_bukuwiring');
+        $id_gardu = $this->Data_bukuwiring->get_data_gardu_by_name_newpdf_idgardu($nama_gardu);
+        echo json_encode(array("id_gardu" => $id_gardu));
+        exit();
+	}
+
 	public function get_data_bay_by_name_idbay() {
 		$nama_bay = $this->input->post('nama_bay');
         $this->load->model('Data_bukuwiring');
@@ -601,13 +625,16 @@ class AdminHome extends MY_Controller {
 
 	public function tambahBuku() {
 		// Get form input values
+		$id_gardu 			= $this->input->post('id_gardu');
 		$nama_gardu 		= $this->input->post('nama_gardu');
 		$id_bay 			= $this->input->post('id_bay');
 		$nama_bay 			= $this->input->post('nama_bay');
 		$jumlah_wiring 		= $this->input->post('jumlah_wiring');
 		$judul_pdf 			= $this->input->post('judul_pdf');
 		$merk_peralatan 	= $this->input->post('merk_peralatan');
+		$id_upt 			= $this->input->post('id_upt');
 		$nama_upt 			= $this->input->post('nama_upt');
+		$id_tragi 			= $this->input->post('id_tragi');
 		$nama_tragi 		= $this->input->post('nama_tragi');
 		$level_tegangan 	= $this->input->post('radioTeganganperalatan');
 		$kategori_peralatan = $this->input->post('radioKategoriperalatan');
@@ -645,8 +672,11 @@ class AdminHome extends MY_Controller {
 			$data = array(
 				'judul_pdf' 			=> $judul_pdf,
 				'merk_peralatan' 		=> $merk_peralatan,
+				'id_upt' 				=> $id_upt,
 				'nama_upt' 				=> $nama_upt,
+				'id_tragi' 				=> $id_tragi,
 				'nama_tragi' 			=> $nama_tragi,
+				'id_gardu' 				=> $id_gardu,
 				'nama_gardu' 			=> $nama_gardu,
 				'id_bay' 				=> $id_bay,
 				'nama_bay' 				=> $nama_bay,

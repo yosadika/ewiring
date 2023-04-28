@@ -374,6 +374,45 @@ class Data_bukuwiring extends CI_model{
         }
     }
 
+    public function get_data_upt_by_name_newpdf_idupt($nama_upt) {
+        $this->db->select('id_upt');
+        $this->db->from('upt');
+        $this->db->where('nama_upt', $nama_upt);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result) {
+            return $result->id_upt;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_data_tragi_by_name_newpdf_idtragi($nama_tragi) {
+        $this->db->select('id_tragi');
+        $this->db->from('tragi');
+        $this->db->where('nama_tragi', $nama_tragi);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result) {
+            return $result->id_tragi;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_data_gardu_by_name_newpdf_idgardu($nama_gardu) {
+        $this->db->select('id_gardu');
+        $this->db->from('gardu');
+        $this->db->where('nama_gardu', $nama_gardu);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result) {
+            return $result->id_gardu;
+        } else {
+            return false;
+        }
+    }
+
 	public function get_data_bay_by_name_jumlahwiring($nama_bay) {
         $this->db->select('bay_pdf_requirement');
         $this->db->from('bay');
