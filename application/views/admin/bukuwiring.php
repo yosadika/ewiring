@@ -258,7 +258,7 @@
 $(document).ready(function() {
 
   $("#example").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false
+      "responsive": true, "lengthChange": true, "autoWidth": false
   });
 
   var table = $('#example').DataTable();
